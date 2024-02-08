@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#header{
+    position: relative;
+}
+main{
+    height: 10000px;
+}
