@@ -1,22 +1,17 @@
-//https://codepen.io/igloude/pen/JjOoQz
+$(window).scroll(function() {
+  var sc = $(window).scrollTop()
+  if (sc > 100) {
+    $("#header-scroll").addClass("small")
+  } else {
+    $("#header-scroll").removeClass("small")
+  }
+});
 
-var lastScrollTop = 0;
-let header = document.querySelector("#header");
-let hbanner = document.querySelector(".header-banner").clientHeight;
 
 
-window.addEventListener("scroll", function(){ 
-    var st = window.pageY || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-    if (st > lastScrollTop) {
-        console.log("abajo");
-        header.setAttribute("style",`color: blue; top: -${hbanner}px;`)
 
-    } else if (st < lastScrollTop) {
-        console.log("arriba");
-        header.setAttribute("style",`color: red; top: 0px;`)
-    } // else was horizontal scroll
-    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-}, false);
+
+
 
 //contador
 
@@ -38,7 +33,7 @@ function actualizarCuentaRegresiva() {
   if (tiempoRestante > 0) {
     tiempoRestante--;
   } else {
-    document.getElementById("countdown").innerHTML = "¡Tiempo terminado!";
+    document.getElementById("countdown").innerHTML = "¡Perdiste el tren!";
   }
 }
 
