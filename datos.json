@@ -1,8 +1,14 @@
 {
   "result": [
     {
-      "ID": "1",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Toyota",
+          "Modelo": "Corolla",
+          "Matricula": "1234 ABC",
+          "Km": "50000",
+          "Numero_Chasis": "ABC123DEF456GHI789"
+        },
         "Cliente": {
           "Nombre": "Juan Pérez",
           "CIF_DNI": "12345678A",
@@ -12,16 +18,21 @@
           "Provincia": "Ciudad Real",
           "CP": "13001"
         },
-        "Marca": "Toyota",
-        "Modelo": "Corolla",
-        "Matricula": "1234 ABC",
-        "Km": "50000",
-        "Numero_Chasis": "ABC123DEF456GHI789"
+        "datos": {
+          "Fecha_entrada": "02/02/2022",
+          "Fecha_entrega_prevista": "15/02/2022"
+        }
       }
     },
     {
-      "ID": "2",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Ford",
+          "Modelo": "Focus",
+          "Matricula": "5678 XYZ",
+          "Km": "70000",
+          "Numero_Chasis": "DEF456GHI789JKL012"
+        },
         "Cliente": {
           "Nombre": "María García",
           "CIF_DNI": "87654321B",
@@ -31,16 +42,21 @@
           "Provincia": "Madrid",
           "CP": "28001"
         },
-        "Marca": "Ford",
-        "Modelo": "Focus",
-        "Matricula": "5678 DEF",
-        "Km": "70000",
-        "Numero_Chasis": "DEF456GHI789JKL012"
+        "datos": {
+          "Fecha_entrada": "10/03/2022",
+          "Fecha_entrega_prevista": "25/03/2022"
+        }
       }
     },
     {
-      "ID": "3",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Volkswagen",
+          "Modelo": "Golf",
+          "Matricula": "9012 GHI",
+          "Km": "30000",
+          "Numero_Chasis": "GHI789JKL012MNO345"
+        },
         "Cliente": {
           "Nombre": "Ana Martínez",
           "CIF_DNI": "98765432C",
@@ -50,16 +66,21 @@
           "Provincia": "Barcelona",
           "CP": "08001"
         },
-        "Marca": "Volkswagen",
-        "Modelo": "Golf",
-        "Matricula": "9012 GHI",
-        "Km": "30000",
-        "Numero_Chasis": "GHI789JKL012MNO345"
+        "datos": {
+          "Fecha_entrada": "15/04/2022",
+          "Fecha_entrega_prevista": "30/04/2022"
+        }
       }
     },
     {
-      "ID": "4",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Renault",
+          "Modelo": "Clio",
+          "Matricula": "3456 JKL",
+          "Km": "40000",
+          "Numero_Chasis": "JKL012MNO345PQR678"
+        },
         "Cliente": {
           "Nombre": "David López",
           "CIF_DNI": "23456789D",
@@ -69,16 +90,21 @@
           "Provincia": "Valencia",
           "CP": "46001"
         },
-        "Marca": "Renault",
-        "Modelo": "Clio",
-        "Matricula": "3456 JKL",
-        "Km": "40000",
-        "Numero_Chasis": "JKL012MNO345PQR678"
+        "datos": {
+          "Fecha_entrada": "20/05/2022",
+          "Fecha_entrega_prevista": "05/06/2022"
+        }
       }
     },
     {
-      "ID": "5",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Seat",
+          "Modelo": "Ibiza",
+          "Matricula": "6789 MNO",
+          "Km": "60000",
+          "Numero_Chasis": "MNO345PQR678STU901"
+        },
         "Cliente": {
           "Nombre": "Laura Fernández",
           "CIF_DNI": "34567890E",
@@ -88,16 +114,21 @@
           "Provincia": "Sevilla",
           "CP": "41001"
         },
-        "Marca": "Seat",
-        "Modelo": "Ibiza",
-        "Matricula": "6789 MNO",
-        "Km": "60000",
-        "Numero_Chasis": "MNO345PQR678STU901"
+        "datos": {
+          "Fecha_entrada": "25/07/2022",
+          "Fecha_entrega_prevista": "10/08/2022"
+        }
       }
     },
     {
-      "ID": "6",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "BMW",
+          "Modelo": "Serie 3",
+          "Matricula": "8901 PQR",
+          "Km": "25000",
+          "Numero_Chasis": "PQR678STU901VWX234"
+        },
         "Cliente": {
           "Nombre": "Carlos Ruiz",
           "CIF_DNI": "45678901F",
@@ -107,16 +138,21 @@
           "Provincia": "Málaga",
           "CP": "29001"
         },
-        "Marca": "BMW",
-        "Modelo": "Serie 3",
-        "Matricula": "8901 PQR",
-        "Km": "25000",
-        "Numero_Chasis": "PQR678STU901VWX234"
+        "datos": {
+          "Fecha_entrada": "12/09/2022",
+          "Fecha_entrega_prevista": "27/09/2022"
+        }
       }
     },
     {
-      "ID": "7",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Mercedes-Benz",
+          "Modelo": "Clase A",
+          "Matricula": "0123 STU",
+          "Km": "55000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        },
         "Cliente": {
           "Nombre": "Sara Gómez",
           "CIF_DNI": "56789012G",
@@ -126,16 +162,21 @@
           "Provincia": "Vizcaya",
           "CP": "48001"
         },
-        "Marca": "Mercedes-Benz",
-        "Modelo": "Clase A",
-        "Matricula": "0123 STU",
-        "Km": "55000",
-        "Numero_Chasis": "STU901VWX234YZA567"
+        "datos": {
+          "Fecha_entrada": "05/11/2022",
+          "Fecha_entrega_prevista": "20/11/2022"
+        }
       }
     },
     {
-      "ID": "8",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Audi",
+          "Modelo": "A3",
+          "Matricula": "2345 UVW",
+          "Km": "35000",
+          "Numero_Chasis": "UVW234BCD890EFG123"
+        },
         "Cliente": {
           "Nombre": "Pedro Rodríguez",
           "CIF_DNI": "67890123H",
@@ -145,16 +186,21 @@
           "Provincia": "Granada",
           "CP": "18001"
         },
-        "Marca": "Audi",
-        "Modelo": "A3",
-        "Matricula": "2345 UVW",
-        "Km": "35000",
-        "Numero_Chasis": "UVW234BCD890EFG123"
+        "datos": {
+          "Fecha_entrada": "18/12/2022",
+          "Fecha_entrega_prevista": "02/01/2023"
+        }
       }
     },
     {
-      "ID": "9",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Peugeot",
+          "Modelo": "208",
+          "Matricula": "3456 XYZ",
+          "Km": "45000",
+          "Numero_Chasis": "XYZ345BCD890EFG123"
+        },
         "Cliente": {
           "Nombre": "Elena Pérez",
           "CIF_DNI": "78901234J",
@@ -164,16 +210,21 @@
           "Provincia": "Córdoba",
           "CP": "14001"
         },
-        "Marca": "Peugeot",
-        "Modelo": "208",
-        "Matricula": "3456 XYZ",
-        "Km": "45000",
-        "Numero_Chasis": "XYZ345BCD890EFG123"
+        "datos": {
+          "Fecha_entrada": "14/02/2023",
+          "Fecha_entrega_prevista": "01/03/2023"
+        }
       }
     },
     {
-      "ID": "10",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Citroën",
+          "Modelo": "C3",
+          "Matricula": "4567 WXY",
+          "Km": "40000",
+          "Numero_Chasis": "WXY234BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Javier Martínez",
           "CIF_DNI": "89012345K",
@@ -183,16 +234,21 @@
           "Provincia": "Zaragoza",
           "CP": "50001"
         },
-        "Marca": "Citroën",
-        "Modelo": "C3",
-        "Matricula": "4567 WXY",
-        "Km": "40000",
-        "Numero_Chasis": "WXY234BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "22/04/2023",
+          "Fecha_entrega_prevista": "07/05/2023"
+        }
       }
     },
     {
-      "ID": "11",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Renault",
+          "Modelo": "Megane",
+          "Matricula": "5678 XYZ",
+          "Km": "55000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Lucía Sánchez",
           "CIF_DNI": "90123456L",
@@ -202,16 +258,21 @@
           "Provincia": "Murcia",
           "CP": "30001"
         },
-        "Marca": "Renault",
-        "Modelo": "Megane",
-        "Matricula": "5678 XYZ",
-        "Km": "55000",
-        "Numero_Chasis": "XYZ345BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "09/06/2023",
+          "Fecha_entrega_prevista": "24/06/2023"
+        }
       }
     },
     {
-      "ID": "12",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Seat",
+          "Modelo": "León",
+          "Matricula": "6789 UVW",
+          "Km": "60000",
+          "Numero_Chasis": "UVW234BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Alberto Gutiérrez",
           "CIF_DNI": "01234567M",
@@ -221,16 +282,21 @@
           "Provincia": "Toledo",
           "CP": "45001"
         },
-        "Marca": "Seat",
-        "Modelo": "León",
-        "Matricula": "6789 UVW",
-        "Km": "60000",
-        "Numero_Chasis": "UVW234BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "03/08/2023",
+          "Fecha_entrega_prevista": "18/08/2023"
+        }
       }
     },
     {
-      "ID": "13",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Volkswagen",
+          "Modelo": "Polo",
+          "Matricula": "8901 STU",
+          "Km": "30000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        },
         "Cliente": {
           "Nombre": "Marina López",
           "CIF_DNI": "12345678N",
@@ -240,16 +306,21 @@
           "Provincia": "Valladolid",
           "CP": "47001"
         },
-        "Marca": "Volkswagen",
-        "Modelo": "Polo",
-        "Matricula": "8901 STU",
-        "Km": "30000",
-        "Numero_Chasis": "STU901VWX234YZA567"
+        "datos": {
+          "Fecha_entrada": "11/10/2023",
+          "Fecha_entrega_prevista": "26/10/2023"
+        }
       }
     },
     {
-      "ID": "14",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Ford",
+          "Modelo": "Fiesta",
+          "Matricula": "0123 XYZ",
+          "Km": "25000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Pablo Martín",
           "CIF_DNI": "23456789O",
@@ -259,16 +330,21 @@
           "Provincia": "Salamanca",
           "CP": "37001"
         },
-        "Marca": "Ford",
-        "Modelo": "Fiesta",
-        "Matricula": "0123 XYZ",
-        "Km": "25000",
-        "Numero_Chasis": "XYZ345BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "30/12/2023",
+          "Fecha_entrega_prevista": "14/01/2024"
+        }
       }
     },
     {
-      "ID": "15",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Toyota",
+          "Modelo": "Yaris",
+          "Matricula": "2345 UVW",
+          "Km": "50000",
+          "Numero_Chasis": "UVW234BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Sandra Sánchez",
           "CIF_DNI": "34567890P",
@@ -278,16 +354,21 @@
           "Provincia": "Burgos",
           "CP": "09001"
         },
-        "Marca": "Toyota",
-        "Modelo": "Yaris",
-        "Matricula": "2345 UVW",
-        "Km": "50000",
-        "Numero_Chasis": "UVW234BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "17/02/2024",
+          "Fecha_entrega_prevista": "03/03/2024"
+        }
       }
     },
     {
-      "ID": "16",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Nissan",
+          "Modelo": "Qashqai",
+          "Matricula": "6789 XYZ",
+          "Km": "40000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Carlos Pérez",
           "CIF_DNI": "45678901Q",
@@ -297,16 +378,21 @@
           "Provincia": "Asturias",
           "CP": "33001"
         },
-        "Marca": "Nissan",
-        "Modelo": "Qashqai",
-        "Matricula": "6789 XYZ",
-        "Km": "40000",
-        "Numero_Chasis": "XYZ345BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "21/04/2024",
+          "Fecha_entrega_prevista": "06/05/2024"
+        }
       }
     },
     {
-      "ID": "17",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Hyundai",
+          "Modelo": "i30",
+          "Matricula": "3456 STU",
+          "Km": "70000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        },
         "Cliente": {
           "Nombre": "Laura García",
           "CIF_DNI": "56789012R",
@@ -316,16 +402,21 @@
           "Provincia": "La Coruña",
           "CP": "15001"
         },
-        "Marca": "Hyundai",
-        "Modelo": "i30",
-        "Matricula": "3456 STU",
-        "Km": "70000",
-        "Numero_Chasis": "STU901VWX234YZA567"
+        "datos": {
+          "Fecha_entrada": "16/06/2024",
+          "Fecha_entrega_prevista": "01/07/2024"
+        }
       }
     },
     {
-      "ID": "18",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Renault",
+          "Modelo": "Captur",
+          "Matricula": "4567 WXY",
+          "Km": "60000",
+          "Numero_Chasis": "WXY234BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Marta Martínez",
           "CIF_DNI": "67890123S",
@@ -335,16 +426,21 @@
           "Provincia": "Navarra",
           "CP": "31001"
         },
-        "Marca": "Renault",
-        "Modelo": "Captur",
-        "Matricula": "4567 WXY",
-        "Km": "60000",
-        "Numero_Chasis": "WXY234BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "10/08/2024",
+          "Fecha_entrega_prevista": "25/08/2024"
+        }
       }
     },
     {
-      "ID": "19",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Ford",
+          "Modelo": "Kuga",
+          "Matricula": "6789 XYZ",
+          "Km": "55000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        },
         "Cliente": {
           "Nombre": "Pedro Sánchez",
           "CIF_DNI": "89012345T",
@@ -354,16 +450,21 @@
           "Provincia": "Álava",
           "CP": "01001"
         },
-        "Marca": "Ford",
-        "Modelo": "Kuga",
-        "Matricula": "6789 XYZ",
-        "Km": "55000",
-        "Numero_Chasis": "XYZ345BCD890EFG567"
+        "datos": {
+          "Fecha_entrada": "05/11/2024",
+          "Fecha_entrega_prevista": "20/11/2024"
+        }
       }
     },
     {
-      "ID": "20",
-      "Vehiculo": {
+      "Revision": {
+        "Vehiculo": {
+          "Marca": "Seat",
+          "Modelo": "Ibiza",
+          "Matricula": "0123 STU",
+          "Km": "45000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        },
         "Cliente": {
           "Nombre": "Elena Gómez",
           "CIF_DNI": "90123456U",
@@ -373,11 +474,10 @@
           "Provincia": "La Rioja",
           "CP": "26001"
         },
-        "Marca": "Seat",
-        "Modelo": "Ibiza",
-        "Matricula": "0123 STU",
-        "Km": "45000",
-        "Numero_Chasis": "STU901VWX234YZA567"
+        "datos": {
+          "Fecha_entrada": "21/01/2025",
+          "Fecha_entrega_prevista": "05/02/2025"
+        }
       }
     }
   ]
