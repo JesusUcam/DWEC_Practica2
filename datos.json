@@ -1,0 +1,345 @@
+{
+    "result": [
+      {
+        "ID": "1",
+        "Vehiculo": {
+          "Propietario": "Juan Pérez",
+          "CIF_DNI": "12345678A",
+          "Domicilio": "Calle Principal, 123",
+          "Telefono": "987654321",
+          "Poblacion": "Ciudad Real",
+          "Provincia": "Ciudad Real",
+          "CP": "13001",
+          "Marca": "Toyota",
+          "Modelo": "Corolla",
+          "Matricula": "1234 ABC",
+          "Km": "50000",
+          "Numero_Chasis": "ABC123DEF456GHI789"
+        }
+      },
+      {
+        "ID": "2",
+        "Vehiculo": {
+          "Propietario": "María García",
+          "CIF_DNI": "87654321B",
+          "Domicilio": "Avenida Libertad, 456",
+          "Telefono": "654987321",
+          "Poblacion": "Madrid",
+          "Provincia": "Madrid",
+          "CP": "28001",
+          "Marca": "Ford",
+          "Modelo": "Focus",
+          "Matricula": "5678 DEF",
+          "Km": "70000",
+          "Numero_Chasis": "DEF456GHI789JKL012"
+        }
+      },
+      {
+        "ID": "3",
+        "Vehiculo": {
+          "Propietario": "Ana Martínez",
+          "CIF_DNI": "98765432C",
+          "Domicilio": "Calle Mayor, 789",
+          "Telefono": "123456789",
+          "Poblacion": "Barcelona",
+          "Provincia": "Barcelona",
+          "CP": "08001",
+          "Marca": "Volkswagen",
+          "Modelo": "Golf",
+          "Matricula": "9012 GHI",
+          "Km": "30000",
+          "Numero_Chasis": "GHI789JKL012MNO345"
+        }
+      },
+      {
+        "ID": "4",
+        "Vehiculo": {
+          "Propietario": "David López",
+          "CIF_DNI": "23456789D",
+          "Domicilio": "Calle San Pablo, 345",
+          "Telefono": "789123456",
+          "Poblacion": "Valencia",
+          "Provincia": "Valencia",
+          "CP": "46001",
+          "Marca": "Renault",
+          "Modelo": "Clio",
+          "Matricula": "3456 JKL",
+          "Km": "40000",
+          "Numero_Chasis": "JKL012MNO345PQR678"
+        }
+      },
+      {
+        "ID": "5",
+        "Vehiculo": {
+          "Propietario": "Laura Fernández",
+          "CIF_DNI": "34567890E",
+          "Domicilio": "Plaza España, 678",
+          "Telefono": "456789123",
+          "Poblacion": "Sevilla",
+          "Provincia": "Sevilla",
+          "CP": "41001",
+          "Marca": "Seat",
+          "Modelo": "Ibiza",
+          "Matricula": "6789 MNO",
+          "Km": "60000",
+          "Numero_Chasis": "MNO345PQR678STU901"
+        }
+      },
+      {
+        "ID": "6",
+        "Vehiculo": {
+          "Propietario": "Carlos Ruiz",
+          "CIF_DNI": "45678901F",
+          "Domicilio": "Calle Gran Vía, 901",
+          "Telefono": "567891234",
+          "Poblacion": "Málaga",
+          "Provincia": "Málaga",
+          "CP": "29001",
+          "Marca": "BMW",
+          "Modelo": "Serie 3",
+          "Matricula": "8901 PQR",
+          "Km": "25000",
+          "Numero_Chasis": "PQR678STU901VWX234"
+        }
+      },
+      {
+        "ID": "7",
+        "Vehiculo": {
+          "Propietario": "Sara Gómez",
+          "CIF_DNI": "56789012G",
+          "Domicilio": "Calle San Miguel, 234",
+          "Telefono": "678912345",
+          "Poblacion": "Bilbao",
+          "Provincia": "Vizcaya",
+          "CP": "48001",
+          "Marca": "Mercedes-Benz",
+          "Modelo": "Clase A",
+          "Matricula": "0123 STU",
+          "Km": "55000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        }
+      },
+      {
+        "ID": "8",
+        "Vehiculo": {
+          "Propietario": "Pedro Rodríguez",
+          "CIF_DNI": "67890123H",
+          "Domicilio": "Calle Real, 345",
+          "Telefono": "789123456",
+          "Poblacion": "Granada",
+          "Provincia": "Granada",
+          "CP": "18001",
+          "Marca": "Audi",
+          "Modelo": "A3",
+          "Matricula": "2345 UVW",
+          "Km": "35000",
+          "Numero_Chasis": "UVW234BCD890EFG123"
+        }
+      },
+      {
+        "ID": "9",
+        "Vehiculo": {
+          "Propietario": "Elena Pérez",
+          "CIF_DNI": "78901234J",
+          "Domicilio": "Avenida Constitución, 456",
+          "Telefono": "891234567",
+          "Poblacion": "Córdoba",
+          "Provincia": "Córdoba",
+          "CP": "14001",
+          "Marca": "Peugeot",
+          "Modelo": "208",
+          "Matricula": "3456 XYZ",
+          "Km": "45000",
+          "Numero_Chasis": "XYZ345BCD890EFG123"
+        }
+      },
+      {
+        "ID": "10",
+        "Vehiculo": {
+          "Propietario": "Javier Martínez",
+          "CIF_DNI": "89012345K",
+          "Domicilio": "Calle Mayor, 567",
+          "Telefono": "912345678",
+          "Poblacion": "Zaragoza",
+          "Provincia": "Zaragoza",
+          "CP": "50001",
+          "Marca": "Citroën",
+          "Modelo": "C3",
+          "Matricula": "4567 WXY",
+          "Km": "40000",
+          "Numero_Chasis": "WXY234BCD890EFG567"
+        }
+      },
+      {
+        "ID": "11",
+        "Vehiculo": {
+          "Propietario": "Lucía Sánchez",
+          "CIF_DNI": "90123456L",
+          "Domicilio": "Avenida Diagonal, 789",
+          "Telefono": "123456789",
+          "Poblacion": "Murcia",
+          "Provincia": "Murcia",
+          "CP": "30001",
+          "Marca": "Renault",
+          "Modelo": "Megane",
+          "Matricula": "5678 XYZ",
+          "Km": "55000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        }
+      },
+      {
+        "ID": "12",
+        "Vehiculo": {
+          "Propietario": "Alberto Gutiérrez",
+          "CIF_DNI": "01234567M",
+          "Domicilio": "Calle San Juan, 123",
+          "Telefono": "234567891",
+          "Poblacion": "Toledo",
+          "Provincia": "Toledo",
+          "CP": "45001",
+          "Marca": "Seat",
+          "Modelo": "León",
+          "Matricula": "6789 UVW",
+          "Km": "60000",
+          "Numero_Chasis": "UVW234BCD890EFG567"
+        }
+      },
+      {
+        "ID": "13",
+        "Vehiculo": {
+          "Propietario": "Marina López",
+          "CIF_DNI": "12345678N",
+          "Domicilio": "Plaza Mayor, 456",
+          "Telefono": "345678912",
+          "Poblacion": "Valladolid",
+          "Provincia": "Valladolid",
+          "CP": "47001",
+          "Marca": "Volkswagen",
+          "Modelo": "Polo",
+          "Matricula": "8901 STU",
+          "Km": "30000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        }
+      },
+      {
+        "ID": "14",
+        "Vehiculo": {
+          "Propietario": "Pablo Martín",
+          "CIF_DNI": "23456789O",
+          "Domicilio": "Calle Libertad, 678",
+          "Telefono": "456789123",
+          "Poblacion": "Salamanca",
+          "Provincia": "Salamanca",
+          "CP": "37001",
+          "Marca": "Ford",
+          "Modelo": "Fiesta",
+          "Matricula": "0123 XYZ",
+          "Km": "25000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        }
+      },
+      {
+        "ID": "15",
+        "Vehiculo": {
+          "Propietario": "Sandra Sánchez",
+          "CIF_DNI": "34567890P",
+          "Domicilio": "Calle Mayor, 901",
+          "Telefono": "678912345",
+          "Poblacion": "Burgos",
+          "Provincia": "Burgos",
+          "CP": "09001",
+          "Marca": "Toyota",
+          "Modelo": "Yaris",
+          "Matricula": "2345 UVW",
+          "Km": "50000",
+          "Numero_Chasis": "UVW234BCD890EFG567"
+        }
+      },
+      {
+        "ID": "16",
+        "Vehiculo": {
+          "Propietario": "Carlos Pérez",
+          "CIF_DNI": "45678901Q",
+          "Domicilio": "Avenida Constitución, 123",
+          "Telefono": "789123456",
+          "Poblacion": "Oviedo",
+          "Provincia": "Asturias",
+          "CP": "33001",
+          "Marca": "Nissan",
+          "Modelo": "Qashqai",
+          "Matricula": "6789 XYZ",
+          "Km": "40000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        }
+      },
+      {
+        "ID": "17",
+        "Vehiculo": {
+          "Propietario": "Laura García",
+          "CIF_DNI": "56789012R",
+          "Domicilio": "Calle Mayor, 345",
+          "Telefono": "912345678",
+          "Poblacion": "Santiago de Compostela",
+          "Provincia": "La Coruña",
+          "CP": "15001",
+          "Marca": "Hyundai",
+          "Modelo": "i30",
+          "Matricula": "3456 STU",
+          "Km": "70000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        }
+      },
+      {
+        "ID": "18",
+        "Vehiculo": {
+          "Propietario": "Marta Martínez",
+          "CIF_DNI": "67890123S",
+          "Domicilio": "Calle San Miguel, 678",
+          "Telefono": "123456789",
+          "Poblacion": "Pamplona",
+          "Provincia": "Navarra",
+          "CP": "31001",
+          "Marca": "Renault",
+          "Modelo": "Captur",
+          "Matricula": "4567 WXY",
+          "Km": "60000",
+          "Numero_Chasis": "WXY234BCD890EFG567"
+        }
+      },
+      {
+        "ID": "19",
+        "Vehiculo": {
+          "Propietario": "Pedro Sánchez",
+          "CIF_DNI": "89012345T",
+          "Domicilio": "Avenida Diagonal, 123",
+          "Telefono": "234567891",
+          "Poblacion": "Vitoria",
+          "Provincia": "Álava",
+          "CP": "01001",
+          "Marca": "Ford",
+          "Modelo": "Kuga",
+          "Matricula": "6789 XYZ",
+          "Km": "55000",
+          "Numero_Chasis": "XYZ345BCD890EFG567"
+        }
+      },
+      {
+        "ID": "20",
+        "Vehiculo": {
+          "Propietario": "Elena Gómez",
+          "CIF_DNI": "90123456U",
+          "Domicilio": "Calle Real, 901",
+          "Telefono": "345678912",
+          "Poblacion": "Logroño",
+          "Provincia": "La Rioja",
+          "CP": "26001",
+          "Marca": "Seat",
+          "Modelo": "Ibiza",
+          "Matricula": "0123 STU",
+          "Km": "45000",
+          "Numero_Chasis": "STU901VWX234YZA567"
+        }
+      }
+    ]
+  }
+  
