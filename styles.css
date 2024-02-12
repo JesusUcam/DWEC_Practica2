@@ -1,9 +1,36 @@
-*{
-    margin: 0;
-    padding: 0;
+
+/*HEADER https://www.youtube.com/watch?v=g7H3ZJN5s9Y*/
+.header{
+    height: 1300px;
 }
-#header{
-    position: relative;
+#header-scroll{
+    position: fixed;
+    height: 170px;
+    background: deepskyblue;
+    left: 0;
+    top: 0;
+    float: left;
+    width: 100%;
+    transition: all 0.3s ease-out;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
+h1{
+    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    line-height: 120px;
+    transition: all 0.3s ease-out;
+    color: azure;
+    font-weight: 400;
+}
+#header-scroll.small{
+    height: 70px;
+    line-height: 35px;
+}
+#header-scroll.small h1{
+    height: 70px;
+    line-height: 35px;
+    font-size: 25px;
 }
 main{
     height: 10000px;
