@@ -7,14 +7,7 @@ $(window).scroll(function() {
   }
 });
 
-
-
-
-
-
-
 //contador
-
 var tiempoRestante = 4 * 60 * 60; // 4 horas en segundos
 
 function actualizarCuentaRegresiva() {
