@@ -28,8 +28,7 @@ fetch('datos.json')
     .then(data => {
         console.log(data);
 
-        //cliente
-        boton.addEventListener("click", function name() {
+        boton.addEventListener("click", function name(params) {
             console.log("hola");
 
             data.result.forEach(Vehiculo => {
