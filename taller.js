@@ -21,12 +21,22 @@ Crear una aplicación que me permita:
 ** IMPORTANTE: Organización y limpieza del código. El json debe llevar datos ficticios y tener bastante información de los clientes, coches, cita.revisiones, ...
 */
 
+/*class Revision {
+    constructor(cliente, vehiculo, fechaEntrada, fechaSalida) {
+        this.cliente = cliente;
+        this.vehiculo = vehiculo;
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
+    }
+
+}*/
+
 let container = document.getElementById("container");
 //Botones
-let btn_ConsultarCitas = document.getElementById("boton");
-let btn_PdirCita = document.getElementById("boton");
-let btn_GestionarClientes = document.getElementById("boton");
-let btn_Tuneo = document.getElementById("boton");
+let btn_ConsultarCitas = document.getElementById("botonCC");
+let btn_PedirCita = document.getElementById("botonPC");
+let btn_GestionarClientes = document.getElementById("botonGC");
+let btn_Tuneo = document.getElementById("botonT");
 
 fetch('datos.json')
     .then(res => res.json())
@@ -35,6 +45,22 @@ fetch('datos.json')
         btn_ConsultarCitas.addEventListener("click", function() {
 
             let tabla = document.createElement("table");
+            tabla.setAttribute("id", "table-prebuilt");
+            tabla.innerHTML = `<th>Fecha de Entrada</th>
+                                <th>Fecha Salida (estimada)</th>
+                                <th>Cliente</th>
+                                <th>DNI</th>
+                                <th>Codigo Postal</th>
+                                <th>poblacion</th>
+                                <th>provincia</th>
+                                <th>domicilio</th>
+                                <th>telefono</th>
+                                <th>matricula</th>
+                                <th>marca</th>
+                                <th>modelo</th>
+                                <th>chasis</th>
+                                <th>KM</th>
+            `;
 
             data.result.forEach(cita => {
                 //Datos cita.revision
@@ -45,29 +71,89 @@ fetch('datos.json')
                 let dni = cita.Revision.Cliente.CIF_DNI;
                 let cp = cita.Revision.Cliente.CP;
                 let poblacion = cita.Revision.Cliente.Poblacion;
-                let provincia = cita.Revision.Cliente.provincia;
+                let provincia = cita.Revision.Cliente.Provincia;
                 let domicilio = cita.Revision.Cliente.Domicilio;
                 let telefono = cita.Revision.Cliente.Telefono;
                 //Datos vehiculo
                 let matricula = cita.Revision.Vehiculo.Matricula;
                 let marca = cita.Revision.Vehiculo.Marca;
                 let modelo = cita.Revision.Vehiculo.Modelo;
-                let chasis = cita.Revision.Vehiculo.Numero_chasis;
-                let km = cita.Revision.Vehiculo.KM;
+                let chasis = cita.Revision.Vehiculo.Numero_Chasis;
+                //Problema con el chasis
+                let km = cita.Revision.Vehiculo.Km;
 
-                crearFila(tabla, nombre);
+                //Seria mucho más útil crear clases y objetos para revision, cliente y vehículo
+                crearFila(tabla, fechaEntrada, fechaSalida, nombre, dni, cp, poblacion, provincia, domicilio, telefono, matricula, marca, modelo, chasis, km);
             });
 
-        });
+            container.appendChild(tabla);
 
+        });
 
     })
 
 
-function crearFila(tabla, nombreC, dni){ 
-    if (nombreC == undefined) {
-        console.log("No hay datos");
-    }
+
+btn_PedirCita.addEventListener("click", function() {
+    console.log("Pedir cita");
+    let formulario = document.createElement("form");
+    let input1 = document.createElement("input");
+
+
+
+});
+
+
+
+function crearFila(tabla, fechaEntrada, fechaSalida, nombre, dni, cp, poblacion, provincia, domicilio, telefono, matricula, marca, modelo, chasis, km){ 
+    
+    let fila = document.createElement("tr");
+
+    let celda1 = document.createElement("td");
+    celda1.textContent = fechaEntrada;
+    let celda2 = document.createElement("td");
+    celda2.textContent = fechaSalida;
+    let celda3 = document.createElement("td");
+    celda3.textContent = nombre;
+    let celda4 = document.createElement("td");
+    celda4.textContent = dni;
+    let celda5 = document.createElement("td");
+    celda5.textContent = cp;
+    let celda6 = document.createElement("td");
+    celda6.textContent = poblacion;
+    let celda7 = document.createElement("td");
+    celda7.textContent = provincia;
+    let celda8 = document.createElement("td");
+    celda8.textContent = domicilio;
+    let celda9 = document.createElement("td");
+    celda9.textContent = telefono;
+    let celda10 = document.createElement("td");
+    celda10.textContent = matricula;
+    let celda11 = document.createElement("td");
+    celda11.textContent = marca;
+    let celda12 = document.createElement("td");
+    celda12.textContent = modelo;
+    let celda13 = document.createElement("td");
+    celda13.textContent = chasis;
+    let celda14 = document.createElement("td");
+    celda14.textContent = km;
+    
+    fila.appendChild(celda1);
+    fila.appendChild(celda2);
+    fila.appendChild(celda3);
+    fila.appendChild(celda4);
+    fila.appendChild(celda5);
+    fila.appendChild(celda6);
+    fila.appendChild(celda7);
+    fila.appendChild(celda8);
+    fila.appendChild(celda9);
+    fila.appendChild(celda10);
+    fila.appendChild(celda11);
+    fila.appendChild(celda12);
+    fila.appendChild(celda13);
+    fila.appendChild(celda14);
+
+    tabla.appendChild(fila);
 }
 
 function inicio() {
