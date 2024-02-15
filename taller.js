@@ -21,15 +21,35 @@ Crear una aplicación que me permita:
 ** IMPORTANTE: Organización y limpieza del código. El json debe llevar datos ficticios y tener bastante información de los clientes, coches, cita.revisiones, ...
 */
 
-/*class Revision {
+let arrayRevisiones = [];
+class Revision {
     constructor(cliente, vehiculo, fechaEntrada, fechaSalida) {
-        this.cliente = cliente;
-        this.vehiculo = vehiculo;
+        this.Cliente = cliente;
+        this.Vehiculo = vehiculo;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
     }
-
-}*/
+}
+class Cliente {
+    constructor(nombre, dni, cp, poblacion, provincia, domicilio, telefono) {
+        this.nombre = nombre;
+        this.dni = dni;
+        this.cp = cp;
+        this.poblacion = poblacion;
+        this.provincia = provincia;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+    }
+}
+class Vehiculo {
+    constructor(matricula, marca, modelo, chasis, km) {
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.chasis = chasis;
+        this.km = km;
+    }
+}
 
 let container = document.getElementById("container");
 //Botones
@@ -42,70 +62,98 @@ fetch('datos.json')
     .then(res => res.json())
     .then(data => {
 
-        btn_ConsultarCitas.addEventListener("click", function() {
+        data.result.forEach(cita => {
+            //Datos cliente
+            let nombre = cita.Revision.Cliente.Nombre;
+            let dni = cita.Revision.Cliente.CIF_DNI;
+            let cp = cita.Revision.Cliente.CP;
+            let poblacion = cita.Revision.Cliente.Poblacion;
+            let provincia = cita.Revision.Cliente.Provincia;
+            let domicilio = cita.Revision.Cliente.Domicilio;
+            let telefono = cita.Revision.Cliente.Telefono;
 
-            let tabla = document.createElement("table");
-            tabla.setAttribute("id", "table-prebuilt");
-            tabla.innerHTML = `<th>Fecha de Entrada</th>
-                                <th>Fecha Salida (estimada)</th>
-                                <th>Cliente</th>
-                                <th>DNI</th>
-                                <th>Codigo Postal</th>
-                                <th>poblacion</th>
-                                <th>provincia</th>
-                                <th>domicilio</th>
-                                <th>telefono</th>
-                                <th>matricula</th>
-                                <th>marca</th>
-                                <th>modelo</th>
-                                <th>chasis</th>
-                                <th>KM</th>
-            `;
+            let cliente = new Cliente(nombre, dni, cp, poblacion, provincia, domicilio, telefono);
 
-            data.result.forEach(cita => {
-                //Datos cita.revision
-                let fechaEntrada = cita.Revision.datos.Fecha_entrada;
-                let fechaSalida = cita.Revision.datos.Fecha_entrega_prevista;
-                //Datos cliente
-                let nombre = cita.Revision.Cliente.Nombre;
-                let dni = cita.Revision.Cliente.CIF_DNI;
-                let cp = cita.Revision.Cliente.CP;
-                let poblacion = cita.Revision.Cliente.Poblacion;
-                let provincia = cita.Revision.Cliente.Provincia;
-                let domicilio = cita.Revision.Cliente.Domicilio;
-                let telefono = cita.Revision.Cliente.Telefono;
-                //Datos vehiculo
-                let matricula = cita.Revision.Vehiculo.Matricula;
-                let marca = cita.Revision.Vehiculo.Marca;
-                let modelo = cita.Revision.Vehiculo.Modelo;
-                let chasis = cita.Revision.Vehiculo.Numero_Chasis;
-                //Problema con el chasis
-                let km = cita.Revision.Vehiculo.Km;
+            //Datos vehiculo
+            let matricula = cita.Revision.Vehiculo.Matricula;
+            let marca = cita.Revision.Vehiculo.Marca;
+            let modelo = cita.Revision.Vehiculo.Modelo;
+            let chasis = cita.Revision.Vehiculo.Numero_Chasis;
+            let km = cita.Revision.Vehiculo.Km;
 
-                //Seria mucho más útil crear clases y objetos para revision, cliente y vehículo
-                crearFila(tabla, fechaEntrada, fechaSalida, nombre, dni, cp, poblacion, provincia, domicilio, telefono, matricula, marca, modelo, chasis, km);
-            });
+            let vehiculo = new Vehiculo(matricula, marca, modelo, chasis, km);
 
-            container.appendChild(tabla);
+            //Datos cita.revision
+            let fechaEntrada = cita.Revision.datos.Fecha_entrada;
+            let fechaSalida = cita.Revision.datos.Fecha_entrega_prevista;
 
+            let revision = new Revision(cliente, vehiculo, fechaEntrada, fechaSalida);
+            arrayRevisiones.push(revision);
         });
 
     })
 
+btn_ConsultarCitas.addEventListener("click", function() {
 
+    let tabla = document.createElement("table");
+    tabla.setAttribute("id", "table-prebuilt");
+    tabla.innerHTML = `<th>Fecha de Entrada</th>
+                        <th>Fecha Salida (estimada)</th>
+                        <th>Cliente</th>
+                        <th>DNI</th>
+                        <th>Codigo Postal</th>
+                        <th>poblacion</th>
+                        <th>provincia</th>
+                        <th>domicilio</th>
+                        <th>telefono</th>
+                        <th>matricula</th>
+                        <th>marca</th>
+                        <th>modelo</th>
+                        <th>chasis</th>
+                        <th>KM</th>`;
+
+    arrayRevisiones.forEach(cita => {
+        tabla.appendChild(crearFila(cita));
+    });
+    container.appendChild(tabla);
+});
 
 btn_PedirCita.addEventListener("click", function() {
     console.log("Pedir cita");
     let formulario = document.createElement("form");
     let input1 = document.createElement("input");
 
-
+    console.log(arrayRevisiones);
+    arrayRevisiones.forEach(revision => {
+        console.log(revision);
+    });
 
 });
 
+function crearFila(cita){ 
 
-
-function crearFila(tabla, fechaEntrada, fechaSalida, nombre, dni, cp, poblacion, provincia, domicilio, telefono, matricula, marca, modelo, chasis, km){ 
+    let cliente = cita.Cliente;
+    let vehiculo = cita.Vehiculo;
+    
+    //Datos cita.revision
+    let fechaEntrada = cita.fechaEntrada;
+    let fechaSalida = cita.fechaSalida;
+    //Datos cliente
+    let nombre = cliente.nombre;
+    let dni = cliente.dni;
+    let cp = cliente.cp;
+    let poblacion = cliente.poblacion;
+    let provincia = cliente.provincia;
+    let domicilio = cliente.domicilio;
+    let telefono = cliente.telefono;
+    //Datos vehiculo
+    let matricula = vehiculo.matricula;
+    let marca = vehiculo.marca;
+    let modelo = vehiculo.modelo;
+    let chasis = vehiculo.chasis;
+    let km = vehiculo.km;
+    
+    console.log(cita);
     
     let fila = document.createElement("tr");
 
@@ -153,7 +201,8 @@ function crearFila(tabla, fechaEntrada, fechaSalida, nombre, dni, cp, poblacion,
     fila.appendChild(celda13);
     fila.appendChild(celda14);
 
-    tabla.appendChild(fila);
+    return fila;
+    
 }
 
 function inicio() {
