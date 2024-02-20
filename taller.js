@@ -21,6 +21,7 @@ Crear una aplicación que me permita:
 ** IMPORTANTE: Organización y limpieza del código. El json debe llevar datos ficticios y tener bastante información de los clientes, coches, cita.revisiones, ...
 */
 
+
 let arrayRevisiones = [];
 class Revision {
     constructor(cliente, vehiculo, fechaEntrada, fechaSalida) {
@@ -115,6 +116,7 @@ btn_ConsultarCitas.addEventListener("click", function() {
     arrayRevisiones.forEach(cita => {
         tabla.appendChild(crearFila(cita));
     });
+    container.innerHTML = "";
     container.appendChild(tabla);
 });
 
@@ -125,8 +127,49 @@ btn_PedirCita.addEventListener("click", function() {
 
     console.log(arrayRevisiones);
     arrayRevisiones.forEach(revision => {
-        console.log(revision);
+        //console.log(revision);
     });
+
+});
+
+btn_GestionarClientes.addEventListener("click", function() {
+    
+    /* IDEAS 
+    Al eliminar un cliente se elminan sus citas
+    Opción para cambiar al cliente de la cita
+    Oprión para registrar un nuevo cliente de forma eficaz
+    */
+    let gestionarC_Eliminar = document.createElement("button");
+    gestionarC_Eliminar.setAttribute("class", "button");
+    gestionarC_Eliminar.textContent = "Eliminar cliente";
+
+    let gestionarC_Cambiar = document.createElement("button");
+    gestionarC_Cambiar.setAttribute("class", "button");
+    gestionarC_Cambiar.textContent = "Cambiar cliente citado";
+
+    let gestionarC_Registrar = document.createElement("button");
+    gestionarC_Registrar.setAttribute("class", "button");
+    gestionarC_Registrar.textContent = "Registrar nuevo cliente";
+
+    container.innerHTML = "";
+    container.appendChild(gestionarC_Eliminar);
+    container.appendChild(gestionarC_Cambiar);
+    container.appendChild(gestionarC_Registrar);
+
+    gestionarC_Eliminar.addEventListener("click", function() {
+        console.log("Eliminar cliente");
+    });
+
+    
+    arrayRevisiones.forEach(revision => {
+        console.log(revision.Cliente);
+    });
+
+});
+
+btn_Tuneo.addEventListener("click", function() {
+    
+
 
 });
 
@@ -153,7 +196,7 @@ function crearFila(cita){
     let chasis = vehiculo.chasis;
     let km = vehiculo.km;
     
-    console.log(cita);
+    //console.log(cita);
     
     let fila = document.createElement("tr");
 
