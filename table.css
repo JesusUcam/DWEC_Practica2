@@ -1,0 +1,209 @@
+/*PROBLEMA: ACONDICIONAR CSS*/
+:root {
+  color-scheme: light dark; /* both supported */
+  --ncs-outline-style: none;
+  
+  --ncs-color-neutral-00: #FFFFFF; /* 255 */
+  --ncs-color-neutral-05: #F2F2F2; /* 205 */
+  --ncs-color-neutral-10: #e2e2e2; /* 226 */
+  --ncs-color-neutral-20: #cdcdcd; /* 205 */
+  --ncs-color-neutral-30: #b3b3b3; /* 179 */
+  --ncs-color-neutral-60: #696969;
+  --ncs-color-neutral-80: #343434; /* 052 */
+  --ncs-color-neutral-90: #1b1b1b; /* 027 */
+   
+  --ncs-color-background: #3b4551;
+  --ncs-color-primary: #2C353D;
+  --ncs-color-primary-dark: #273039;
+  --ncs-color-primary-black: #151A1E;
+  
+  --ncs-color-highlight: #51947B; /* 51947B 59a688; 3fbe8d; */  
+  --ncs-color-console: #3fbead; /*#b0ffb0;*/ 
+  
+  --ncs-fontsize: 16px; /* 15px  0.9em */
+}
+
+/* Debugging */
+div { outline: 1px var(--ncs-outline-style) white; }
+
+/*
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}*/
+
+html {
+  min-height: 100%;
+  min-width: 720px;
+/*-webkit-overflow-scrolling: touch;*/
+  font-family: "Open Sans", Verdana, Geneva, sans-serif;
+  font-size: var(--ncs-fontsize);
+  line-height: 1.4;
+  font-weight: 300;
+}
+body {
+  min-height: 100%;
+  min-width: 720px;
+  margin: 12px;
+  color: var(--ncs-color-neutral-30);
+  background-color: var(--ncs-color-background);
+  background-image: radial-gradient(ellipse at top center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+h1::After {
+  font-size: 0.6em;
+  position: absolute;
+  text-align: right;
+  right: 8px;
+}
+
+#table-outer {
+  display: flex;
+  padding: 18px 0px;
+  border-radius: 8px 8px 0px 0px;
+  background-color: var(--ncs-color-primary-black);
+}
+/* ------------------------------------------------------------------ */
+/* table */
+/* ------------------------------------------------------------------ */
+table {
+  width: 100%;
+  background-color: var(--ncs-color-primary);
+}
+
+table, th, td {
+  border-collapse: collapse;
+  table-layout: auto;
+  color: var(--ncs-color-neutral-10);
+}
+
+th, td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+td {
+  padding: 3px 16px 3px 0px;
+  font-size: 0.8125em;
+  font-weight: 300;
+}
+
+th {
+  font-size: 0.875em;
+  font-weight: 400;
+  padding: 3px 20px 0px 0px;
+  text-align: left;
+  min-width: 40px;
+  cursor: pointer;
+  border-bottom: 2px solid var(--ncs-color-primary-black);
+  background-color: var(--ncs-color-primary-black);
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 2;
+  top: 0;
+  height: 24px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--ncs-color-primary-dark);
+}
+
+td:nth-child(1) {
+  text-align: right;
+}
+
+th:nth-child(1) {
+  text-align: right;
+}
+
+td.warning {
+  color: #F00;
+}
+
+/* This will change appearance of non-hovered elements.
+tbody:hover > tr td {
+  color: #AAA;
+}
+*/
+
+
+tr:hover td {
+  color: var(--ncs-color-neutral-00);
+  background: var(--ncs-color-highlight);
+}
+
+/*
+.th-sorted {  
+  color: var(--ncs-color-highlight);
+}
+*/
+
+.th-sorted::after { 
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid var(--ncs-color-highlight);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Arrows: https://www.w3schools.com/howto/howto_css_arrows.asp           */
+/* ---------------------------------------------------------------------- */
+.th-arrow {
+  border-top: solid var(--ncs-color-neutral-80);
+  border-right: solid var(--ncs-color-neutral-20);
+  border-bottom: solid var(--ncs-color-neutral-20);
+  border-left: solid var(--ncs-color-neutral-80);
+  border-width: 2px;
+  display: inline-block;
+  padding: 3px;
+  margin: 2px 8px 0px 2px;
+}
+
+.off {
+  border: solid var(--ncs-color-neutral-80);
+  border-width: 2px;
+  margin: 2px 8px 0px 2px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* 
+▲	 black up-pointing triangle	                  022662	9650	0x25B2	&#9650;
+https://unicodelookup.com/#math/7
+𝛁	mathematical bold nabla	                    0353301	120513	0x1D6C1	&#120513;
+𝚫	mathematical bold capital delta	            0353253	120491	0x1D6AB	&#120491
+𝝠	mathematical sans-serif bold capital lamda	0353540	120672	0x1D760	&#120672;
+𝝯	mathematical sans-serif bold nabla	        0353557	120687	0x1D76F	&#120687;
+*/
