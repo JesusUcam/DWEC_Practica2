@@ -152,6 +152,7 @@ btn_PedirCita.addEventListener("click", function() {
 
 });
 
+//MODIFICAR CLIENTES
 btn_GestionarClientes.addEventListener("click", function() {
 
     //EN CONSTRUCCION 
@@ -162,6 +163,8 @@ btn_GestionarClientes.addEventListener("click", function() {
     Opción para cambiar al cliente de la cita
     Oprión para registrar un nuevo cliente de forma eficaz
     */
+
+    //Botones para modificar los clientes
     let gestionarC_Eliminar = document.createElement("button");
     gestionarC_Eliminar.setAttribute("class", "button");
     gestionarC_Eliminar.textContent = "Eliminar cliente";
@@ -182,9 +185,6 @@ btn_GestionarClientes.addEventListener("click", function() {
     gestionarC_Eliminar.addEventListener("click", function() {
         console.log("Eliminar cliente");
     });
-
-    console.log(arrayClientes);
-    console.log(arrayVehiculos);
     
     arrayRevisiones.forEach(revision => {
         //console.log(revision.Cliente);
