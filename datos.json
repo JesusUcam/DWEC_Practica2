@@ -10,13 +10,13 @@
           "Numero_Chasis": "ABC123DEF456GHI789"
         },
         "Cliente": {
-          "Nombre": "Juan Pérez",
-          "CIF_DNI": "12345678A",
-          "Domicilio": "Calle Principal, 123",
-          "Telefono": "987654321",
-          "Poblacion": "Ciudad Real",
-          "Provincia": "Ciudad Real",
-          "CP": "13001"
+          "Nombre": "Jesús Martínez",
+          "CIF_DNI": "49790584T",
+          "Domicilio": "Camino Puente Magaz, 27A",
+          "Telefono": "644972126",
+          "Poblacion": "Murcia",
+          "Provincia": "Murcia",
+          "CP": "30106"
         },
         "datos": {
           "Fecha_entrada": "02/02/2022",
@@ -34,13 +34,13 @@
           "Numero_Chasis": "DEF456GHI789JKL012"
         },
         "Cliente": {
-          "Nombre": "María García",
-          "CIF_DNI": "87654321B",
-          "Domicilio": "Avenida Libertad, 456",
-          "Telefono": "654987321",
-          "Poblacion": "Madrid",
-          "Provincia": "Madrid",
-          "CP": "28001"
+          "Nombre": "Jesús Martínez",
+          "CIF_DNI": "49790584T",
+          "Domicilio": "Camino Puente Magaz, 27A",
+          "Telefono": "644972126",
+          "Poblacion": "Murcia",
+          "Provincia": "Murcia",
+          "CP": "30106"
         },
         "datos": {
           "Fecha_entrada": "10/03/2022",
@@ -58,13 +58,13 @@
           "Numero_Chasis": "GHI789JKL012MNO345"
         },
         "Cliente": {
-          "Nombre": "Ana Martínez",
-          "CIF_DNI": "98765432C",
-          "Domicilio": "Calle Mayor, 789",
-          "Telefono": "123456789",
-          "Poblacion": "Barcelona",
-          "Provincia": "Barcelona",
-          "CP": "08001"
+          "Nombre": "Jesús Martínez",
+          "CIF_DNI": "49790584T",
+          "Domicilio": "Camino Puente Magaz, 27A",
+          "Telefono": "644972126",
+          "Poblacion": "Murcia",
+          "Provincia": "Murcia",
+          "CP": "30106"
         },
         "datos": {
           "Fecha_entrada": "15/04/2022",
