@@ -31,6 +31,7 @@ class Revision {
         this.fechaSalida = fechaSalida;
     }
 }
+let arrayClientes = [];
 class Cliente {
     constructor(nombre, dni, cp, poblacion, provincia, domicilio, telefono) {
         this.nombre = nombre;
@@ -42,6 +43,7 @@ class Cliente {
         this.telefono = telefono;
     }
 }
+let arrayVehiculos = [];
 class Vehiculo {
     constructor(matricula, marca, modelo, chasis, km) {
         this.matricula = matricula;
@@ -54,17 +56,18 @@ class Vehiculo {
 
 //METODOS AÑADIR AL ARRAY
 function registrarCliente(cliente) {
-    arrayClientes.forEach(clienteR => {
-        if (clienteR.dni == cliente.dni) {
-            console.log("El cliente ya existe");
-        } else if (clienteR.dni != cliente.dni) {
-            console.log("Cliente registrado");
-        }
-    });
-    arrayClientes.push(cliente);
+    let clienteExiste = arrayClientes.find(clienteE => clienteE.dni === cliente.dni);
+    if (!clienteExiste) {
+        arrayClientes.push(cliente);
+    } //MEJORA: controlar que un cliente con el mismo DNI deba tener los mismos datos
 }
 function registrarVehiculo(vehiculo) {
-    arrayVehiculos.push(vehiculo);
+    let vehiculoExiste = arrayVehiculos.find(vehiculoE => vehiculoE.matricula === vehiculo.matricula);
+    if (!vehiculoExiste) {
+        arrayVehiculos.push(vehiculo);
+    } else {
+        console.log(`${vehiculo.matricula}---`);
+    } //MEJORA: controlar que un vehiculo con la misma matricula deba tener los mismos datos
 }
 
 let container = document.getElementById("container");
@@ -89,6 +92,7 @@ fetch('datos.json')
             let telefono = cita.Revision.Cliente.Telefono;
 
             let cliente = new Cliente(nombre, dni, cp, poblacion, provincia, domicilio, telefono);
+            registrarCliente(cliente);
 
             //Datos vehiculo
             let matricula = cita.Revision.Vehiculo.Matricula;
@@ -98,6 +102,7 @@ fetch('datos.json')
             let km = cita.Revision.Vehiculo.Km;
 
             let vehiculo = new Vehiculo(matricula, marca, modelo, chasis, km);
+            registrarVehiculo(vehiculo);
 
             //Datos cita.revision
             let fechaEntrada = cita.Revision.datos.Fecha_entrada;
@@ -148,6 +153,9 @@ btn_PedirCita.addEventListener("click", function() {
 });
 
 btn_GestionarClientes.addEventListener("click", function() {
+
+    //EN CONSTRUCCION 
+    //firmado: Jesús 
     
     /* IDEAS 
     Al eliminar un cliente se elminan sus citas
@@ -175,9 +183,11 @@ btn_GestionarClientes.addEventListener("click", function() {
         console.log("Eliminar cliente");
     });
 
+    console.log(arrayClientes);
+    console.log(arrayVehiculos);
     
     arrayRevisiones.forEach(revision => {
-        console.log(revision.Cliente);
+        //console.log(revision.Cliente);
     });
 
 });
