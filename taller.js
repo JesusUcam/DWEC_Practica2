@@ -52,6 +52,21 @@ class Vehiculo {
     }
 }
 
+//METODOS AÑADIR AL ARRAY
+function registrarCliente(cliente) {
+    arrayClientes.forEach(clienteR => {
+        if (clienteR.dni == cliente.dni) {
+            console.log("El cliente ya existe");
+        } else if (clienteR.dni != cliente.dni) {
+            console.log("Cliente registrado");
+        }
+    });
+    arrayClientes.push(cliente);
+}
+function registrarVehiculo(vehiculo) {
+    arrayVehiculos.push(vehiculo);
+}
+
 let container = document.getElementById("container");
 //Botones
 let btn_ConsultarCitas = document.getElementById("botonCC");
