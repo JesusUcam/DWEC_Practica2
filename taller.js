@@ -249,7 +249,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
                         <th>matricula</th>
                         <th>marca</th>
                         <th>modelo</th>
-                        <th>chasis1</th>
+                        <th>chasis</th>
                         <th>KM</th>`;
 
   arrayRevisiones.forEach((cita) => {
