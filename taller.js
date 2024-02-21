@@ -162,7 +162,7 @@ function crearModal(x) {
 
       container.appendChild(modal);
       break;
-    case "modificar":
+    case "cliente":
 
       let cliente = x;
       tituloHeader.textContent = "Modificar cita";
@@ -184,6 +184,8 @@ function crearModal(x) {
       formulario.querySelector("#km").value = cliente.km;
 
       modalBody.appendChild(formulario);
+
+      console.log(cliente);
 
       container.appendChild(modal);
       break;
