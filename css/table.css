@@ -207,3 +207,9 @@ https://unicodelookup.com/#math/7
 𝝠	mathematical sans-serif bold capital lamda	0353540	120672	0x1D760	&#120672;
 𝝯	mathematical sans-serif bold nabla	        0353557	120687	0x1D76F	&#120687;
 */
+
+/* Cosas propias */
+.filaSeleccionada.filaSeleccionada {
+  color: var(--ncs-color-neutral-00);
+  background: var(--ncs-color-console);
+}

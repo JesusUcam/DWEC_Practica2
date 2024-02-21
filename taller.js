@@ -118,7 +118,10 @@ btn_ConsultarCitas.addEventListener("click", function() {
 
     let tabla = document.createElement("table");
     tabla.setAttribute("id", "table-prebuilt");
-    tabla.innerHTML = `<th>Fecha de Entrada</th>
+    tabla.innerHTML = `
+    
+    <thead>   
+    </thead><th>Fecha de Entrada</th>
                         <th>Fecha Salida (estimada)</th>
                         <th>Cliente</th>
                         <th>DNI</th>
@@ -153,6 +156,108 @@ btn_PedirCita.addEventListener("click", function() {
 });
 
 //MODIFICAR CLIENTES
+crearFilaCliente = (cliente) => {
+    let fila = document.createElement("tr");
+
+    let nombreFila = document.createElement("td");
+    nombreFila.textContent = cliente.nombre;
+
+    let dniFila = document.createElement("td");
+    dniFila.textContent = cliente.dni;
+
+    let telefonoFila = document.createElement("td");
+    telefonoFila.textContent = cliente.telefono;
+
+    let cpFila = document.createElement("td");
+    cpFila.textContent = cliente.cp;
+
+    let poblacionFila = document.createElement("td");
+    poblacionFila.textContent = cliente.poblacion;
+
+    let provinciaFila = document.createElement("td");
+    provinciaFila.textContent = cliente.provincia;
+
+    let domicilioFila = document.createElement("td");
+    domicilioFila.textContent = cliente.domicilio;
+
+
+    fila.appendChild(nombreFila);
+    fila.appendChild(dniFila);
+    fila.appendChild(telefonoFila);
+    fila.appendChild(cpFila);
+    fila.appendChild(poblacionFila);
+    fila.appendChild(provinciaFila);
+    fila.appendChild(domicilioFila);
+
+    //Acciones
+    let btnsCelda = document.createElement("td");
+    let btnEliminarCl = document.createElement("button");
+    btnEliminarCl.setAttribute("class", "button");
+    btnEliminarCl.textContent = "Eliminar";
+    let btnModificarCl = document.createElement("button");
+    btnModificarCl.setAttribute("class", "button");
+    btnModificarCl.textContent = "Modificar";
+
+    btnsCelda.setAttribute("style", "display: flex; margin;");
+
+    btnsCelda.appendChild(btnEliminarCl);
+    btnsCelda.appendChild(btnModificarCl);
+    fila.appendChild(btnsCelda);
+
+    //Eventons
+    btnEliminarCl.addEventListener("click", function() {
+        arrayClientes.forEach(clienteA => {
+            if (clienteA.dni === cliente.dni) {
+                let index = arrayClientes.indexOf(clienteA);
+                arrayClientes.splice(index, 1);
+                btn_GestionarClientes.click();
+            }
+        });
+    });
+    btnModificarCl.addEventListener("click", function() {
+
+        let modal = document.createElement("div");
+        modal.setAttribute("class", "modal");
+
+        let modalContent = document.createElement("div");
+        modalContent.setAttribute("class", "modal-content");
+
+        let modalHeader = document.createElement("div");
+        modalHeader.setAttribute("class", "modal-header");
+
+        let modalBody = document.createElement("div");
+        modalBody.setAttribute("class", "modal-body");
+
+        let close = document.createElement("span");
+        close.setAttribute("class", "close");
+        close.innerHTML = `&times;`;
+        close.addEventListener("click", function() {
+            container.removeChild(modal);
+        });
+        let tituloHeader = document.createElement("h2");
+        tituloHeader.textContent = `${cliente.nombre}`;
+
+        modalHeader.appendChild(close);
+        modalHeader.appendChild(tituloHeader);  
+
+        modalBody.innerHTML = `Aqui poner los datos del usuario con un formulario para modificarlos, por ejemplo, me espero a que tu termines el formulario Alex`;
+
+        modalContent.appendChild(modalHeader);
+        modalContent.appendChild(modalBody);
+        modal.appendChild(modalContent);
+
+        container.appendChild(modal);
+        
+    });
+
+    //Prueba toggle
+        
+    fila.addEventListener("click", function() {
+        fila.classList.toggle("filaSeleccionada");
+    });
+
+    return fila;
+}
 btn_GestionarClientes.addEventListener("click", function() {
 
     //EN CONSTRUCCION 
@@ -163,6 +268,23 @@ btn_GestionarClientes.addEventListener("click", function() {
     Opción para cambiar al cliente de la cita
     Oprión para registrar un nuevo cliente de forma eficaz
     */
+
+    console.log(arrayClientes);
+    //TABLA
+    let tablaCliente = document.createElement("table");
+    tablaCliente.setAttribute("id", "table-prebuilt");
+    tablaCliente.innerHTML = `<th>Nombre</th>
+                        <th>DNI</th>
+                        <th>telefono</th>
+                        <th>Codigo Postal</th>
+                        <th>poblacion</th>
+                        <th>provincia</th>
+                        <th>domicilio</th>
+                        <th>Acciones</th>`;
+
+    arrayClientes.forEach(cliente => {
+        tablaCliente.appendChild(crearFilaCliente(cliente));
+    });
 
     //Botones para modificar los clientes
     let gestionarC_Eliminar = document.createElement("button");
@@ -178,9 +300,10 @@ btn_GestionarClientes.addEventListener("click", function() {
     gestionarC_Registrar.textContent = "Registrar nuevo cliente";
 
     container.innerHTML = "";
-    container.appendChild(gestionarC_Eliminar);
-    container.appendChild(gestionarC_Cambiar);
-    container.appendChild(gestionarC_Registrar);
+    //container.appendChild(gestionarC_Eliminar);
+    //container.appendChild(gestionarC_Cambiar);
+    //container.appendChild(gestionarC_Registrar);
+    container.appendChild(tablaCliente);
 
     gestionarC_Eliminar.addEventListener("click", function() {
         console.log("Eliminar cliente");
