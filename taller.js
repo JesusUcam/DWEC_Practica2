@@ -54,7 +54,18 @@ class Vehiculo {
 }
 
 //MODAL
-function crearModal(cliente, modo) {
+function crearModal(x) {
+
+/* 3 TIPOS DE MODAL (de momento)
+    - Para pedir revisión
+    - Para modificar Clientes
+    - Para confirmar acción (si/no)
+  Entonces: 
+    - Sobran parámetros
+    - Hay que cambiar la construcción del form
+*/
+
+  //DECLARACIÓN 
   let modal = document.createElement("div");
   modal.setAttribute("class", "modal");
 
@@ -74,8 +85,31 @@ function crearModal(cliente, modo) {
     container.removeChild(modal);
   });
 
+  
+  let modo = "";
+  //Comprobación para saber que modal necesitamos
+  if (arrayClientes.includes(x)) {
+    console.log("Cliente");
+    modo = "cliente";
+    return true;
+  } else if (arrayRevisiones.includes(x)) {
+    console.log("Revision");
+    console.log("False"); 
+  } else if (arrayVehiculos.includes(x)) {
+    console.log("Vehiculo");
+    modo = "vehiculo"; //No se usa todavia
+  } else if (x=="nuevo") {
+    console.log("Nuevo");
+    modo=x; 
+  } else {
+    console.log("Confirmar");
+    modo="confirmar";
+  }
+
+  //MEJORA: ponerlo más estético
   function crearFormulario() {
     let formulario = document.createElement("form");
+  //Se me ocurre crear los componentes del formulario con createelement para que sean más manejables según el tipo de modal
     formulario.innerHTML = `
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
@@ -107,29 +141,31 @@ function crearModal(cliente, modo) {
     return formulario;
   }
 
+  //Factor común del modal
+  let tituloHeader = document.createElement("h2");
+
+  modalHeader.appendChild(close); //
+  modalHeader.appendChild(tituloHeader); //
+
+  //modalBody.appendChild(crearFormulario()); Cuando todo esté arreglado irá aquí
+
+  modalContent.appendChild(modalHeader); //
+  modalContent.appendChild(modalBody);//
+  modal.appendChild(modalContent);//
+
   switch (modo) {
     case "nuevo":
-      let tituloHeaderNuevo = document.createElement("h2");
-      tituloHeaderNuevo.textContent = "Nueva cita";
-
-      modalHeader.appendChild(close);
-      modalHeader.appendChild(tituloHeaderNuevo);
+      
+      tituloHeader.textContent = "Nueva cita";
 
       modalBody.appendChild(crearFormulario());
-
-      modalContent.appendChild(modalHeader);
-      modalContent.appendChild(modalBody);
-      modal.appendChild(modalContent);
 
       container.appendChild(modal);
       break;
     case "modificar":
-      let tituloHeaderModificar = document.createElement("h2");
-      tituloHeaderModificar.textContent = "Modificar cita";
 
-      // Agregar el botón de cierre y el título al encabezado del modal
-      modalHeader.appendChild(close);
-      modalHeader.appendChild(tituloHeaderModificar);
+      let cliente = x;
+      tituloHeader.textContent = "Modificar cita";
 
       // Agregar los datos del cliente al formulario
       let formulario = crearFormulario();
@@ -147,15 +183,50 @@ function crearModal(cliente, modo) {
       formulario.querySelector("#chasis").value = cliente.chasis;
       formulario.querySelector("#km").value = cliente.km;
 
-      // Agregar el formulario al cuerpo del modal
       modalBody.appendChild(formulario);
 
-      // Agregar el contenido del modal al modal
-      modalContent.appendChild(modalHeader);
-      modalContent.appendChild(modalBody);
-      modal.appendChild(modalContent);
+      container.appendChild(modal);
+      break;
+    case "confirmar":
 
-      // Agregar el modal al contenedor principal
+      let si = document.createElement("button");
+      let no = document.createElement("button");
+      si.setAttribute("class", "button");
+      no.setAttribute("class", "button");
+      si.textContent = "Confirmar";
+      no.textContent = "Cancelar ";
+
+      modalBody.setAttribute("style", "display: flex; justify-content: center;");
+      modalBody.appendChild(si);
+      modalBody.appendChild(no);
+
+      //EventListeners
+      si.addEventListener("click", function () {
+        
+      clientesSeleccionados = document.getElementsByClassName("filaSeleccionada");
+
+        for (let i = 0; i < clientesSeleccionados.length; i++) {
+          
+          
+          let c = clientesSeleccionados[i].id;
+
+          arrayClientes.forEach((clienteA) => {
+            if (c === clienteA.dni) {
+              let index = arrayClientes.indexOf(clienteA);
+              arrayClientes.splice(index, 1);
+            }
+          });
+        }
+
+        btn_GestionarClientes.click();
+        
+      });
+
+      no.addEventListener("click", function () {
+        container.removeChild(modal);
+        return false;
+      });
+
       container.appendChild(modal);
       break;
   }
@@ -264,6 +335,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
 //MODIFICAR CLIENTES
 crearFilaCliente = (cliente) => {
   let fila = document.createElement("tr");
+  fila.setAttribute("id", cliente.dni);
 
   let nombreFila = document.createElement("td");
   nombreFila.textContent = cliente.nombre;
@@ -320,7 +392,7 @@ crearFilaCliente = (cliente) => {
     });
   });
   btnModificarCl.addEventListener("click", function () {
-    crearModal(cliente, "modificar");
+    crearModal(cliente);
   });
 
   //Prueba toggle
@@ -332,7 +404,7 @@ crearFilaCliente = (cliente) => {
   return fila;
 };
 btn_PedirCita.addEventListener("click", function () {
-  crearModal(null, "nuevo");
+  crearModal("nuevo");
 });
 
 btn_GestionarClientes.addEventListener("click", function () {
@@ -362,32 +434,22 @@ btn_GestionarClientes.addEventListener("click", function () {
     tablaCliente.appendChild(crearFilaCliente(cliente));
   });
 
-  //Botones para modificar los clientes
-  let gestionarC_Eliminar = document.createElement("button");
-  gestionarC_Eliminar.setAttribute("class", "button");
-  gestionarC_Eliminar.textContent = "Eliminar cliente";
-
-  let gestionarC_Cambiar = document.createElement("button");
-  gestionarC_Cambiar.setAttribute("class", "button");
-  gestionarC_Cambiar.textContent = "Cambiar cliente citado";
-
-  let gestionarC_Registrar = document.createElement("button");
-  gestionarC_Registrar.setAttribute("class", "button");
-  gestionarC_Registrar.textContent = "Registrar nuevo cliente";
+  //Boton de eliminar seleccionados
+  let modificarSeleccionados = document.createElement("button");
+  modificarSeleccionados.setAttribute("class", "button");
+  modificarSeleccionados.setAttribute("id", "modSeleccionados");
+  modificarSeleccionados.textContent = "Mofificar Clientes seleccionados";
 
   container.innerHTML = "";
-  //container.appendChild(gestionarC_Eliminar);
-  //container.appendChild(gestionarC_Cambiar);
-  //container.appendChild(gestionarC_Registrar);
   container.appendChild(tablaCliente);
+  container.appendChild(modificarSeleccionados);
 
-  gestionarC_Eliminar.addEventListener("click", function () {
-    console.log("Eliminar cliente");
+  modificarSeleccionados.addEventListener("click", function () {
+
+    crearModal("¿Desea eliminar permanentemente estos clientes?");
+    
   });
 
-  arrayRevisiones.forEach((revision) => {
-    //console.log(revision.Cliente);
-  });
 });
 
 btn_Tuneo.addEventListener("click", function () {});
