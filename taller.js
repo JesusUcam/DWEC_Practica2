@@ -74,6 +74,39 @@ function crearModal(cliente, modo) {
     container.removeChild(modal);
   });
 
+  function crearFormulario() {
+    let formulario = document.createElement("form");
+    formulario.innerHTML = `
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="dni" required>
+        <label for="cp">Codigo Postal</label>
+        <input type="text" id="cp" name="cp" required>
+        <label for="poblacion">Poblacion</label>
+        <input type="text" id="poblacion" name="poblacion" required>
+        <label for="provincia">Provincia</label>
+        <input type="text" id="provincia" name="provincia" required>
+        <label for="domicilio">Domicilio</label>
+        <input type="text" id="domicilio" name="domicilio" required>
+        <label for="telefono">Telefono</label>
+        <input type="text" id="telefono" name="telefono" required>
+        <label for "matricula">Matricula</label>
+        <input type="text" id="matricula" name="matricula" required>
+        <label for="marca">Marca</label>
+        <input type="text" id="marca" name="marca" required>
+        <label for="modelo">Modelo</label>
+        <input type="text" id="modelo" name="modelo" required>
+        <label for="chasis">Chasis</label>
+        <input type="text" id="chasis" name="chasis" required>
+        <label for="km">Kilometros</label>
+        <input type="text" id="km" name="km" required>
+        <input type="submit" value="Enviar">
+        `;
+
+    return formulario;
+  }
+
   switch (modo) {
     case "nuevo":
       let tituloHeaderNuevo = document.createElement("h2");
@@ -82,7 +115,7 @@ function crearModal(cliente, modo) {
       modalHeader.appendChild(close);
       modalHeader.appendChild(tituloHeaderNuevo);
 
-      modalBody.innerHTML = `Crear cita`;
+      modalBody.appendChild(crearFormulario());
 
       modalContent.appendChild(modalHeader);
       modalContent.appendChild(modalBody);
@@ -91,20 +124,39 @@ function crearModal(cliente, modo) {
       container.appendChild(modal);
       break;
     case "modificar":
-      let TituloHeaderModificar = document.createElement("h2");
-      TituloHeaderModificar.innerHTML = `${cliente.nombre}`;
+      let tituloHeaderModificar = document.createElement("h2");
+      tituloHeaderModificar.textContent = "Modificar cita";
 
+      // Agregar el botón de cierre y el título al encabezado del modal
       modalHeader.appendChild(close);
-      modalHeader.appendChild(TituloHeaderModificar);
+      modalHeader.appendChild(tituloHeaderModificar);
 
-      modalBody.innerHTML = `Modal modificar cliente`;
+      // Agregar los datos del cliente al formulario
+      let formulario = crearFormulario();
 
+      formulario.querySelector("#nombre").value = cliente.nombre;
+      formulario.querySelector("#dni").value = cliente.dni;
+      formulario.querySelector("#cp").value = cliente.codigoPostal;
+      formulario.querySelector("#poblacion").value = cliente.poblacion;
+      formulario.querySelector("#provincia").value = cliente.provincia;
+      formulario.querySelector("#domicilio").value = cliente.domicilio;
+      formulario.querySelector("#telefono").value = cliente.telefono;
+      formulario.querySelector("#matricula").value = cliente.matricula;
+      formulario.querySelector("#marca").value = cliente.marca;
+      formulario.querySelector("#modelo").value = cliente.modelo;
+      formulario.querySelector("#chasis").value = cliente.chasis;
+      formulario.querySelector("#km").value = cliente.km;
+
+      // Agregar el formulario al cuerpo del modal
+      modalBody.appendChild(formulario);
+
+      // Agregar el contenido del modal al modal
       modalContent.appendChild(modalHeader);
       modalContent.appendChild(modalBody);
       modal.appendChild(modalContent);
 
+      // Agregar el modal al contenedor principal
       container.appendChild(modal);
-
       break;
   }
 }
