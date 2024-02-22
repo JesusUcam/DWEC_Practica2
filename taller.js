@@ -110,6 +110,7 @@ function crearModal(x) {
   function crearFormulario() {
     let formulario = document.createElement("form");
   //Se me ocurre crear los componentes del formulario con createelement para que sean más manejables según el tipo de modal
+    let 
     formulario.innerHTML = `
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
@@ -190,6 +191,8 @@ function crearModal(x) {
       container.appendChild(modal);
       break;
     case "confirmar":
+
+      tituloHeader.textContent = x;
 
       let si = document.createElement("button");
       let no = document.createElement("button");
