@@ -106,12 +106,90 @@ function crearModal(x) {
     modo="confirmar";
   }
 
-  //MEJORA: ponerlo más estético
   function crearFormulario() {
+
+    //FORMULARIO
     let formulario = document.createElement("form");
-  //Se me ocurre crear los componentes del formulario con createelement para que sean más manejables según el tipo de modal
-    let 
-    formulario.innerHTML = `
+    formulario.setAttribute("style", "display: flex; flex-direction: column; justify-content: center;");
+
+
+    //CAMPOS DEL FORMULARIO
+    let fnombre = document.createElement("input");
+    fnombre.setAttribute("type", "text");
+    fnombre.setAttribute("placeholder", "Nombre");
+
+    let fdni = document.createElement("input");
+    fdni.setAttribute("type", "text");
+    fdni.setAttribute("placeholder", "DNI");
+
+    let ffecha_entrada = document.createElement("input");
+    ffecha_entrada.setAttribute("type", "date");
+    
+    let ffecha_salida = document.createElement("input");
+    ffecha_salida.setAttribute("type", "date");
+    
+    let fcp = document.createElement("input");
+    fcp.setAttribute("type", "number");
+    fcp.setAttribute("placeholder", "Codigo Postal");
+    
+    let fpoblacion = document.createElement("input");
+    fpoblacion.setAttribute("type", "text");
+    fpoblacion.setAttribute("placeholder", "poblacion");
+    
+    let fprovincia = document.createElement("input");
+    fprovincia.setAttribute("type", "text");
+    fprovincia.setAttribute("placeholder", "provincia");
+    
+    let fdomicilio = document.createElement("input");
+    fdomicilio.setAttribute("type", "text");
+    fdomicilio.setAttribute("placeholder", "domicilio");
+    
+    let ftelefono = document.createElement("input");
+    ftelefono.setAttribute("type", "text");
+    ftelefono.setAttribute("placeholder", "telefono");
+    
+    let fmatricula = document.createElement("input");
+    fmatricula.setAttribute("type", "text");
+    fmatricula.setAttribute("placeholder", "matricula");
+    
+    let fmarca = document.createElement("input");
+    fmarca.setAttribute("type", "text");
+    fmarca.setAttribute("placeholder", "text");
+    
+    let fmodelo = document.createElement("input");
+    fmodelo.setAttribute("type", "text");
+    fmodelo.setAttribute("placeholder", "modelo");
+    
+    let fchasis = document.createElement("input");
+    fchasis.setAttribute("type", "text");
+    fchasis.setAttribute("placeholder", "chasis");
+    
+    let fkm = document.createElement("input");
+    fkm.setAttribute("type", "text");
+    fkm.setAttribute("placeholder", "Kilometros");
+
+    let fEnviar = document.createElement("button");
+    fEnviar.setAttribute("class", "button");
+    fEnviar.textContent = "Pedir Cita";
+
+
+    formulario.appendChild(fnombre);
+    formulario.appendChild(fdni);
+    formulario.appendChild(ffecha_entrada);
+    formulario.appendChild(ffecha_salida);
+    formulario.appendChild(fcp);
+    formulario.appendChild(fpoblacion);
+    formulario.appendChild(fprovincia);
+    formulario.appendChild(fdomicilio);
+    formulario.appendChild(ftelefono);
+    formulario.appendChild(fmatricula);
+    formulario.appendChild(fmarca);
+    formulario.appendChild(fmodelo);
+    formulario.appendChild(fchasis);
+    formulario.appendChild(fkm);
+    formulario.appendChild(fEnviar);
+
+    /*formulario.innerHTML = `
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
         <label for="dni">DNI</label>
@@ -137,7 +215,7 @@ function crearModal(x) {
         <label for="km">Kilometros</label>
         <input type="text" id="km" name="km" required>
         <input type="submit" value="Enviar">
-        `;
+        `;*/
 
     return formulario;
   }
