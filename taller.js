@@ -85,186 +85,185 @@ function crearModal(x) {
     container.removeChild(modal);
   });
 
+  //FORMULARIO
+  let formulario = document.createElement("form");
+  formulario.setAttribute("style", "display: flex; flex-direction: column; justify-content: center;");
+  
+  
+  //CAMPOS DEL FORMULARIO
+  let fnombre = document.createElement("input");
+  fnombre.setAttribute("type", "text");
+  fnombre.setAttribute("placeholder", "Nombre");
+  
+  let fdni = document.createElement("input");
+  fdni.setAttribute("type", "text");
+  fdni.setAttribute("placeholder", "DNI");
+  
+  let ffecha_entrada = document.createElement("input");
+  ffecha_entrada.setAttribute("type", "date");
+  
+  let ffecha_salida = document.createElement("input");
+  ffecha_salida.setAttribute("type", "date");
+  
+  let fcp = document.createElement("input");
+  fcp.setAttribute("type", "number");
+  fcp.setAttribute("placeholder", "Codigo Postal");
+  
+  let fpoblacion = document.createElement("input");
+  fpoblacion.setAttribute("type", "text");
+  fpoblacion.setAttribute("placeholder", "Poblacion");
+  
+  let fprovincia = document.createElement("input");
+  fprovincia.setAttribute("type", "text");
+  fprovincia.setAttribute("placeholder", "Provincia");
+  
+  let fdomicilio = document.createElement("input");
+  fdomicilio.setAttribute("type", "text");
+  fdomicilio.setAttribute("placeholder", "Domicilio");
+  
+  let ftelefono = document.createElement("input");
+  ftelefono.setAttribute("type", "text");
+  ftelefono.setAttribute("placeholder", "Telefono");
+  
+  let fmatricula = document.createElement("input");
+  fmatricula.setAttribute("type", "text");
+  fmatricula.setAttribute("placeholder", "Matricula");
+  
+  let fmarca = document.createElement("input");
+  fmarca.setAttribute("type", "text");
+  fmarca.setAttribute("placeholder", "Marca");
+  
+  let fmodelo = document.createElement("input");
+  fmodelo.setAttribute("type", "text");
+  fmodelo.setAttribute("placeholder", "modelo");
+  
+  let fchasis = document.createElement("input");
+  fchasis.setAttribute("type", "text");
+  fchasis.setAttribute("placeholder", "chasis");
+  
+  let fkm = document.createElement("input");
+  fkm.setAttribute("type", "text");
+  fkm.setAttribute("placeholder", "Kilometros");
+  
+  let fEnviar = document.createElement("button");
+  fEnviar.setAttribute("class", "button");
+  
+  /*formulario.innerHTML = `
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" name="nombre" required>
+  <label for="dni">DNI</label>
+  <input type="text" id="dni" name="dni" required>
+  <label for="cp">Codigo Postal</label>
+  <input type="text" id="cp" name="cp" required>
+  <label for="poblacion">Poblacion</label>
+  <input type="text" id="poblacion" name="poblacion" required>
+  <label for="provincia">Provincia</label>
+  <input type="text" id="provincia" name="provincia" required>
+  <label for="domicilio">Domicilio</label>
+  <input type="text" id="domicilio" name="domicilio" required>
+  <label for="telefono">Telefono</label>
+  <input type="text" id="telefono" name="telefono" required>
+  <label for "matricula">Matricula</label>
+  <input type="text" id="matricula" name="matricula" required>
+  <label for="marca">Marca</label>
+  <input type="text" id="marca" name="marca" required>
+  <label for="modelo">Modelo</label>
+  <input type="text" id="modelo" name="modelo" required>
+  <label for="chasis">Chasis</label>
+  <input type="text" id="chasis" name="chasis" required>
+  <label for="km">Kilometros</label>
+  <input type="text" id="km" name="km" required>
+  <input type="submit" value="Enviar">
+  `;*/
+  
+  //Factor común del modal
+  let tituloHeader = document.createElement("h2");
+  
+  modalHeader.appendChild(close); //
+  modalHeader.appendChild(tituloHeader); //
+  
+  modalBody.appendChild(formulario); //
+  
+  modalContent.appendChild(modalHeader); //
+  modalContent.appendChild(modalBody);//
+  modal.appendChild(modalContent);//
+  
+  
   
   let modo = "";
   //Comprobación para saber que modal necesitamos
   if (arrayClientes.includes(x)) {
-    console.log("Cliente");
+    console.log("Es un cliente");
     modo = "cliente";
-    return true;
   } else if (arrayRevisiones.includes(x)) {
-    console.log("Revision");
-    console.log("False"); 
+    console.log("Es una revisión");
   } else if (arrayVehiculos.includes(x)) {
-    console.log("Vehiculo");
+    console.log("Es un vehiculo");
     modo = "vehiculo"; //No se usa todavia
   } else if (x=="nuevo") {
-    console.log("Nuevo");
+    console.log("Pedir cita");
     modo=x; 
   } else {
     console.log("Confirmar");
     modo="confirmar";
   }
 
-  function crearFormulario() {
-
-    //FORMULARIO
-    let formulario = document.createElement("form");
-    formulario.setAttribute("style", "display: flex; flex-direction: column; justify-content: center;");
-
-
-    //CAMPOS DEL FORMULARIO
-    let fnombre = document.createElement("input");
-    fnombre.setAttribute("type", "text");
-    fnombre.setAttribute("placeholder", "Nombre");
-
-    let fdni = document.createElement("input");
-    fdni.setAttribute("type", "text");
-    fdni.setAttribute("placeholder", "DNI");
-
-    let ffecha_entrada = document.createElement("input");
-    ffecha_entrada.setAttribute("type", "date");
-    
-    let ffecha_salida = document.createElement("input");
-    ffecha_salida.setAttribute("type", "date");
-    
-    let fcp = document.createElement("input");
-    fcp.setAttribute("type", "number");
-    fcp.setAttribute("placeholder", "Codigo Postal");
-    
-    let fpoblacion = document.createElement("input");
-    fpoblacion.setAttribute("type", "text");
-    fpoblacion.setAttribute("placeholder", "poblacion");
-    
-    let fprovincia = document.createElement("input");
-    fprovincia.setAttribute("type", "text");
-    fprovincia.setAttribute("placeholder", "provincia");
-    
-    let fdomicilio = document.createElement("input");
-    fdomicilio.setAttribute("type", "text");
-    fdomicilio.setAttribute("placeholder", "domicilio");
-    
-    let ftelefono = document.createElement("input");
-    ftelefono.setAttribute("type", "text");
-    ftelefono.setAttribute("placeholder", "telefono");
-    
-    let fmatricula = document.createElement("input");
-    fmatricula.setAttribute("type", "text");
-    fmatricula.setAttribute("placeholder", "matricula");
-    
-    let fmarca = document.createElement("input");
-    fmarca.setAttribute("type", "text");
-    fmarca.setAttribute("placeholder", "text");
-    
-    let fmodelo = document.createElement("input");
-    fmodelo.setAttribute("type", "text");
-    fmodelo.setAttribute("placeholder", "modelo");
-    
-    let fchasis = document.createElement("input");
-    fchasis.setAttribute("type", "text");
-    fchasis.setAttribute("placeholder", "chasis");
-    
-    let fkm = document.createElement("input");
-    fkm.setAttribute("type", "text");
-    fkm.setAttribute("placeholder", "Kilometros");
-
-    let fEnviar = document.createElement("button");
-    fEnviar.setAttribute("class", "button");
-    fEnviar.textContent = "Pedir Cita";
-
-
-    formulario.appendChild(fnombre);
-    formulario.appendChild(fdni);
-    formulario.appendChild(ffecha_entrada);
-    formulario.appendChild(ffecha_salida);
-    formulario.appendChild(fcp);
-    formulario.appendChild(fpoblacion);
-    formulario.appendChild(fprovincia);
-    formulario.appendChild(fdomicilio);
-    formulario.appendChild(ftelefono);
-    formulario.appendChild(fmatricula);
-    formulario.appendChild(fmarca);
-    formulario.appendChild(fmodelo);
-    formulario.appendChild(fchasis);
-    formulario.appendChild(fkm);
-    formulario.appendChild(fEnviar);
-
-    /*formulario.innerHTML = `
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <label for="dni">DNI</label>
-        <input type="text" id="dni" name="dni" required>
-        <label for="cp">Codigo Postal</label>
-        <input type="text" id="cp" name="cp" required>
-        <label for="poblacion">Poblacion</label>
-        <input type="text" id="poblacion" name="poblacion" required>
-        <label for="provincia">Provincia</label>
-        <input type="text" id="provincia" name="provincia" required>
-        <label for="domicilio">Domicilio</label>
-        <input type="text" id="domicilio" name="domicilio" required>
-        <label for="telefono">Telefono</label>
-        <input type="text" id="telefono" name="telefono" required>
-        <label for "matricula">Matricula</label>
-        <input type="text" id="matricula" name="matricula" required>
-        <label for="marca">Marca</label>
-        <input type="text" id="marca" name="marca" required>
-        <label for="modelo">Modelo</label>
-        <input type="text" id="modelo" name="modelo" required>
-        <label for="chasis">Chasis</label>
-        <input type="text" id="chasis" name="chasis" required>
-        <label for="km">Kilometros</label>
-        <input type="text" id="km" name="km" required>
-        <input type="submit" value="Enviar">
-        `;*/
-
-    return formulario;
-  }
-
-  //Factor común del modal
-  let tituloHeader = document.createElement("h2");
-
-  modalHeader.appendChild(close); //
-  modalHeader.appendChild(tituloHeader); //
-
-  //modalBody.appendChild(crearFormulario()); Cuando todo esté arreglado irá aquí
-
-  modalContent.appendChild(modalHeader); //
-  modalContent.appendChild(modalBody);//
-  modal.appendChild(modalContent);//
-
   switch (modo) {
+    //Pedir cita
     case "nuevo":
       
       tituloHeader.textContent = "Nueva cita";
 
-      modalBody.appendChild(crearFormulario());
+      //MEJORA: Los campos de cliente se pueden simplificar con un select
+      formulario.appendChild(fnombre);
+      formulario.appendChild(fdni);
+      formulario.appendChild(ffecha_entrada);
+      formulario.appendChild(ffecha_salida);
+      formulario.appendChild(fcp);
+      formulario.appendChild(fpoblacion);
+      formulario.appendChild(fprovincia);
+      formulario.appendChild(fdomicilio);
+      formulario.appendChild(ftelefono);
+      formulario.appendChild(fmatricula);
+      formulario.appendChild(fmarca);
+      formulario.appendChild(fmodelo);
+      formulario.appendChild(fchasis);
+      formulario.appendChild(fkm);
+      formulario.appendChild(fEnviar);
+      
+      //Boton de enviar
+      fEnviar.textContent = "Pedir Cita";
 
       container.appendChild(modal);
-      break;
-    case "cliente":
 
+      break;
+    //Modificar cliente
+    case "cliente":
+      
       let cliente = x;
       tituloHeader.textContent = "Modificar cita";
 
       // Agregar los datos del cliente al formulario
-      let formulario = crearFormulario();
 
-      formulario.querySelector("#nombre").value = cliente.nombre;
-      formulario.querySelector("#dni").value = cliente.dni;
-      formulario.querySelector("#cp").value = cliente.codigoPostal;
-      formulario.querySelector("#poblacion").value = cliente.poblacion;
-      formulario.querySelector("#provincia").value = cliente.provincia;
-      formulario.querySelector("#domicilio").value = cliente.domicilio;
-      formulario.querySelector("#telefono").value = cliente.telefono;
-      formulario.querySelector("#matricula").value = cliente.matricula;
-      formulario.querySelector("#marca").value = cliente.marca;
-      formulario.querySelector("#modelo").value = cliente.modelo;
-      formulario.querySelector("#chasis").value = cliente.chasis;
-      formulario.querySelector("#km").value = cliente.km;
+      formulario.appendChild(fnombre);
+      formulario.appendChild(fdni);
+      formulario.appendChild(fcp);
+      formulario.appendChild(fpoblacion);
+      formulario.appendChild(fprovincia);
+      formulario.appendChild(fdomicilio);
+      formulario.appendChild(ftelefono);
+      formulario.appendChild(fEnviar);
 
-      modalBody.appendChild(formulario);
-
-      console.log(cliente);
+      fnombre.value = cliente.nombre;
+      fdni.value = cliente.dni;
+      fcp.value = cliente.cp;
+      fpoblacion.value = cliente.poblacion;
+      fprovincia.value = cliente.provincia;
+      fdomicilio.value = cliente.domicilio;
+      ftelefono.value = cliente.telefono;
+      
+      //Boton de enviar
+      fEnviar.textContent = "Guardar Modificaciones";
 
       container.appendChild(modal);
       break;
