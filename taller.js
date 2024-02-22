@@ -54,7 +54,17 @@ class Vehiculo {
 }
 
 //MODAL
-function crearModal(cliente, modo) {
+function crearModal(x) {
+  /* 3 TIPOS DE MODAL (de momento)
+    - Para pedir revisión
+    - Para modificar Clientes
+    - Para confirmar acción (si/no)
+  Entonces: 
+    - Sobran parámetros
+    - Hay que cambiar la construcción del form
+*/
+
+  //DECLARACIÓN
   let modal = document.createElement("div");
   modal.setAttribute("class", "modal");
 
@@ -74,139 +84,227 @@ function crearModal(cliente, modo) {
     container.removeChild(modal);
   });
 
-  function crearFormulario() {
-    let formulario = document.createElement("form");
-    formulario.innerHTML = `
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <label for="dni">DNI</label>
-        <input type="text" id="dni" name="dni" required>
-        <label for="cp">Codigo Postal</label>
-        <input type="text" id="cp" name="cp" required>
-        <label for="poblacion">Poblacion</label>
-        <input type="text" id="poblacion" name="poblacion" required>
-        <label for="provincia">Provincia</label>
-        <input type="text" id="provincia" name="provincia" required>
-        <label for="domicilio">Domicilio</label>
-        <input type="text" id="domicilio" name="domicilio" required>
-        <label for="telefono">Telefono</label>
-        <input type="text" id="telefono" name="telefono" required>
-        <label for "matricula">Matricula</label>
-        <input type="text" id="matricula" name="matricula" required>
-        <label for="marca">Marca</label>
-        <input type="text" id="marca" name="marca" required>
-        <label for="modelo">Modelo</label>
-        <input type="text" id="modelo" name="modelo" required>
-        <label for="chasis">Chasis</label>
-        <input type="text" id="chasis" name="chasis" required>
-        <label for="km">Kilometros</label>
-        <input type="text" id="km" name="km" required>
-        <input type="submit" value="Enviar">
-        `;
+  //FORMULARIO
+  let formulario = document.createElement("form");
+  formulario.setAttribute(
+    "style",
+    "display: flex; flex-direction: column; justify-content: center;"
+  );
 
-    formulario.addEventListener("submit", function (event) {
-      event.preventDefault();
-      let nombre = formulario.querySelector("#nombre").value;
-      let dni = formulario.querySelector("#dni").value;
-      let cp = formulario.querySelector("#cp").value;
-      let poblacion = formulario.querySelector("#poblacion").value;
-      let provincia = formulario.querySelector("#provincia").value;
-      let domicilio = formulario.querySelector("#domicilio").value;
-      let telefono = formulario.querySelector("#telefono").value;
-      let matricula = formulario.querySelector("#matricula").value;
-      let marca = formulario.querySelector("#marca").value;
-      let modelo = formulario.querySelector("#modelo").value;
-      let chasis = formulario.querySelector("#chasis").value;
-      let km = formulario.querySelector("#km").value;
+  //CAMPOS DEL FORMULARIO
+  let fnombre = document.createElement("input");
+  fnombre.setAttribute("type", "text");
+  fnombre.setAttribute("placeholder", "Nombre");
 
-      let datosFormulario = {
-        nombre: nombre,
-        dni: dni,
-        cp: cp,
-        poblacion: poblacion,
-        provincia: provincia,
-        domicilio: domicilio,
-        telefono: telefono,
-        matricula: matricula,
-        marca: marca,
-        modelo: modelo,
-        chasis: chasis,
-        km: km,
-      };
+  let fdni = document.createElement("input");
+  fdni.setAttribute("type", "text");
+  fdni.setAttribute("placeholder", "DNI");
 
-      guardarDatosLocalStorage(
-        arrayClientes,
-        arrayVehiculos,
-        arrayRevisiones,
-        datosFormulario
-      );
+  let ffecha_entrada = document.createElement("input");
+  ffecha_entrada.setAttribute("type", "date");
 
-      console.log("datos JSON a guardar", datosJSON);
+  let ffecha_salida = document.createElement("input");
+  ffecha_salida.setAttribute("type", "date");
 
-      guardarDatosLocalStorage(
-        arrayClientes,
-        arrayVehiculos,
-        arrayRevisiones,
-        datosFormulario
-      ); // Pasar los datos del formulario a la función
+  let fcp = document.createElement("input");
+  fcp.setAttribute("type", "number");
+  fcp.setAttribute("placeholder", "Codigo Postal");
 
-      alert("Datos enviados de forma correcta");
+  let fpoblacion = document.createElement("input");
+  fpoblacion.setAttribute("type", "text");
+  fpoblacion.setAttribute("placeholder", "Poblacion");
 
-      console.log(localStorage.getItem("datos")); // Cambiado "datos)" por "datos"
-    });
+  let fprovincia = document.createElement("input");
+  fprovincia.setAttribute("type", "text");
+  fprovincia.setAttribute("placeholder", "Provincia");
 
-    return formulario;
+  let fdomicilio = document.createElement("input");
+  fdomicilio.setAttribute("type", "text");
+  fdomicilio.setAttribute("placeholder", "Domicilio");
+
+  let ftelefono = document.createElement("input");
+  ftelefono.setAttribute("type", "text");
+  ftelefono.setAttribute("placeholder", "Telefono");
+
+  let fmatricula = document.createElement("input");
+  fmatricula.setAttribute("type", "text");
+  fmatricula.setAttribute("placeholder", "Matricula");
+
+  let fmarca = document.createElement("input");
+  fmarca.setAttribute("type", "text");
+  fmarca.setAttribute("placeholder", "Marca");
+
+  let fmodelo = document.createElement("input");
+  fmodelo.setAttribute("type", "text");
+  fmodelo.setAttribute("placeholder", "modelo");
+
+  let fchasis = document.createElement("input");
+  fchasis.setAttribute("type", "text");
+  fchasis.setAttribute("placeholder", "chasis");
+
+  let fkm = document.createElement("input");
+  fkm.setAttribute("type", "text");
+  fkm.setAttribute("placeholder", "Kilometros");
+
+  let fEnviar = document.createElement("button");
+  fEnviar.setAttribute("class", "button");
+
+  /*formulario.innerHTML = `
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" name="nombre" required>
+  <label for="dni">DNI</label>
+  <input type="text" id="dni" name="dni" required>
+  <label for="cp">Codigo Postal</label>
+  <input type="text" id="cp" name="cp" required>
+  <label for="poblacion">Poblacion</label>
+  <input type="text" id="poblacion" name="poblacion" required>
+  <label for="provincia">Provincia</label>
+  <input type="text" id="provincia" name="provincia" required>
+  <label for="domicilio">Domicilio</label>
+  <input type="text" id="domicilio" name="domicilio" required>
+  <label for="telefono">Telefono</label>
+  <input type="text" id="telefono" name="telefono" required>
+  <label for "matricula">Matricula</label>
+  <input type="text" id="matricula" name="matricula" required>
+  <label for="marca">Marca</label>
+  <input type="text" id="marca" name="marca" required>
+  <label for="modelo">Modelo</label>
+  <input type="text" id="modelo" name="modelo" required>
+  <label for="chasis">Chasis</label>
+  <input type="text" id="chasis" name="chasis" required>
+  <label for="km">Kilometros</label>
+  <input type="text" id="km" name="km" required>
+  <input type="submit" value="Enviar">
+  `;*/
+
+  //Factor común del modal
+  let tituloHeader = document.createElement("h2");
+
+  modalHeader.appendChild(close); //
+  modalHeader.appendChild(tituloHeader); //
+
+  modalBody.appendChild(formulario); //
+
+  modalContent.appendChild(modalHeader); //
+  modalContent.appendChild(modalBody); //
+  modal.appendChild(modalContent); //
+
+  let modo = "";
+  //Comprobación para saber que modal necesitamos
+  if (arrayClientes.includes(x)) {
+    console.log("Es un cliente");
+    modo = "cliente";
+  } else if (arrayRevisiones.includes(x)) {
+    console.log("Es una revisión");
+  } else if (arrayVehiculos.includes(x)) {
+    console.log("Es un vehiculo");
+    modo = "vehiculo"; //No se usa todavia
+  } else if (x == "nuevo") {
+    console.log("Pedir cita");
+    modo = x;
+  } else {
+    console.log("Confirmar");
+    modo = "confirmar";
   }
 
   switch (modo) {
+    //Pedir cita
     case "nuevo":
-      let tituloHeaderNuevo = document.createElement("h2");
-      tituloHeaderNuevo.textContent = "Nueva cita";
+      tituloHeader.textContent = "Nueva cita";
 
-      modalHeader.appendChild(close);
-      modalHeader.appendChild(tituloHeaderNuevo);
+      //MEJORA: Los campos de cliente se pueden simplificar con un select
+      formulario.appendChild(fnombre);
+      formulario.appendChild(fdni);
+      formulario.appendChild(ffecha_entrada);
+      formulario.appendChild(ffecha_salida);
+      formulario.appendChild(fcp);
+      formulario.appendChild(fpoblacion);
+      formulario.appendChild(fprovincia);
+      formulario.appendChild(fdomicilio);
+      formulario.appendChild(ftelefono);
+      formulario.appendChild(fmatricula);
+      formulario.appendChild(fmarca);
+      formulario.appendChild(fmodelo);
+      formulario.appendChild(fchasis);
+      formulario.appendChild(fkm);
+      formulario.appendChild(fEnviar);
 
-      modalBody.appendChild(crearFormulario());
+      //Boton de enviar
+      fEnviar.textContent = "Pedir Cita";
 
-      modalContent.appendChild(modalHeader);
-      modalContent.appendChild(modalBody);
-      modal.appendChild(modalContent);
+      container.appendChild(modal);
+
+      break;
+    //Modificar cliente
+    case "cliente":
+      let cliente = x;
+      tituloHeader.textContent = "Modificar cita";
+
+      // Agregar los datos del cliente al formulario
+
+      formulario.appendChild(fnombre);
+      formulario.appendChild(fdni);
+      formulario.appendChild(fcp);
+      formulario.appendChild(fpoblacion);
+      formulario.appendChild(fprovincia);
+      formulario.appendChild(fdomicilio);
+      formulario.appendChild(ftelefono);
+      formulario.appendChild(fEnviar);
+
+      fnombre.value = cliente.nombre;
+      fdni.value = cliente.dni;
+      fcp.value = cliente.cp;
+      fpoblacion.value = cliente.poblacion;
+      fprovincia.value = cliente.provincia;
+      fdomicilio.value = cliente.domicilio;
+      ftelefono.value = cliente.telefono;
+
+      //Boton de enviar
+      fEnviar.textContent = "Guardar Modificaciones";
 
       container.appendChild(modal);
       break;
-    case "modificar":
-      let tituloHeaderModificar = document.createElement("h2");
-      tituloHeaderModificar.textContent = "Modificar cita";
+    case "confirmar":
+      tituloHeader.textContent = x;
 
-      // Agregar el botón de cierre y el título al encabezado del modal
-      modalHeader.appendChild(close);
-      modalHeader.appendChild(tituloHeaderModificar);
+      let si = document.createElement("button");
+      let no = document.createElement("button");
+      si.setAttribute("class", "button");
+      no.setAttribute("class", "button");
+      si.textContent = "Confirmar";
+      no.textContent = "Cancelar ";
 
-      // Agregar los datos del cliente al formulario
-      let formulario = crearFormulario();
+      modalBody.setAttribute(
+        "style",
+        "display: flex; justify-content: center;"
+      );
+      modalBody.appendChild(si);
+      modalBody.appendChild(no);
 
-      formulario.querySelector("#nombre").value = cliente.nombre;
-      formulario.querySelector("#dni").value = cliente.dni;
-      formulario.querySelector("#cp").value = cliente.codigoPostal;
-      formulario.querySelector("#poblacion").value = cliente.poblacion;
-      formulario.querySelector("#provincia").value = cliente.provincia;
-      formulario.querySelector("#domicilio").value = cliente.domicilio;
-      formulario.querySelector("#telefono").value = cliente.telefono;
-      formulario.querySelector("#matricula").value = cliente.matricula;
-      formulario.querySelector("#marca").value = cliente.marca;
-      formulario.querySelector("#modelo").value = cliente.modelo;
-      formulario.querySelector("#chasis").value = cliente.chasis;
-      formulario.querySelector("#km").value = cliente.km;
+      //EventListeners
+      si.addEventListener("click", function () {
+        clientesSeleccionados =
+          document.getElementsByClassName("filaSeleccionada");
 
-      // Agregar el formulario al cuerpo del modal
-      modalBody.appendChild(formulario);
+        for (let i = 0; i < clientesSeleccionados.length; i++) {
+          let c = clientesSeleccionados[i].id;
 
-      // Agregar el contenido del modal al modal
-      modalContent.appendChild(modalHeader);
-      modalContent.appendChild(modalBody);
-      modal.appendChild(modalContent);
+          arrayClientes.forEach((clienteA) => {
+            if (c === clienteA.dni) {
+              let index = arrayClientes.indexOf(clienteA);
+              arrayClientes.splice(index, 1);
+            }
+          });
+        }
 
-      // Agregar el modal al contenedor principal
+        btn_GestionarClientes.click();
+      });
+
+      no.addEventListener("click", function () {
+        container.removeChild(modal);
+        return false;
+      });
+
       container.appendChild(modal);
       break;
   }
@@ -280,25 +378,7 @@ fetch("datos.json")
       let revision = new Revision(cliente, vehiculo, fechaEntrada, fechaSalida);
       arrayRevisiones.push(revision);
     });
-
-    guardarDatosLocalStorage(arrayClientes, arrayVehiculos, arrayRevisiones);
   });
-
-function guardarDatosLocalStorage(
-  clientes,
-  vehiculos,
-  revisiones,
-  datosFormulario
-) {
-  let datos = {
-    clientes: clientes,
-    vehiculos: vehiculos,
-    revisiones: revisiones,
-    formulario: datosFormulario,
-  };
-  let datosJSON = JSON.stringify(datos);
-  localStorage.setItem("datos", datosJSON); // Cambiar la clave a "datos"
-}
 
 btn_ConsultarCitas.addEventListener("click", function () {
   let tabla = document.createElement("table");
@@ -333,6 +413,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
 //MODIFICAR CLIENTES
 crearFilaCliente = (cliente) => {
   let fila = document.createElement("tr");
+  fila.setAttribute("id", cliente.dni);
 
   let nombreFila = document.createElement("td");
   nombreFila.textContent = cliente.nombre;
@@ -389,7 +470,7 @@ crearFilaCliente = (cliente) => {
     });
   });
   btnModificarCl.addEventListener("click", function () {
-    crearModal(cliente, "modificar");
+    crearModal(cliente);
   });
 
   //Prueba toggle
@@ -401,7 +482,7 @@ crearFilaCliente = (cliente) => {
   return fila;
 };
 btn_PedirCita.addEventListener("click", function () {
-  crearModal(null, "nuevo");
+  crearModal("nuevo");
 });
 
 btn_GestionarClientes.addEventListener("click", function () {
@@ -413,7 +494,7 @@ btn_GestionarClientes.addEventListener("click", function () {
     Opción para cambiar al cliente de la cita
     Oprión para registrar un nuevo cliente de forma eficaz
     */
-  console.log(localStorage.getItem("datos)"));
+
   console.log(arrayClientes);
   //TABLA
   let tablaCliente = document.createElement("table");
@@ -431,31 +512,18 @@ btn_GestionarClientes.addEventListener("click", function () {
     tablaCliente.appendChild(crearFilaCliente(cliente));
   });
 
-  //Botones para modificar los clientes
-  let gestionarC_Eliminar = document.createElement("button");
-  gestionarC_Eliminar.setAttribute("class", "button");
-  gestionarC_Eliminar.textContent = "Eliminar cliente";
-
-  let gestionarC_Cambiar = document.createElement("button");
-  gestionarC_Cambiar.setAttribute("class", "button");
-  gestionarC_Cambiar.textContent = "Cambiar cliente citado";
-
-  let gestionarC_Registrar = document.createElement("button");
-  gestionarC_Registrar.setAttribute("class", "button");
-  gestionarC_Registrar.textContent = "Registrar nuevo cliente";
+  //Boton de eliminar seleccionados
+  let modificarSeleccionados = document.createElement("button");
+  modificarSeleccionados.setAttribute("class", "button");
+  modificarSeleccionados.setAttribute("id", "modSeleccionados");
+  modificarSeleccionados.textContent = "Mofificar Clientes seleccionados";
 
   container.innerHTML = "";
-  //container.appendChild(gestionarC_Eliminar);
-  //container.appendChild(gestionarC_Cambiar);
-  //container.appendChild(gestionarC_Registrar);
   container.appendChild(tablaCliente);
+  container.appendChild(modificarSeleccionados);
 
-  gestionarC_Eliminar.addEventListener("click", function () {
-    console.log("Eliminar cliente");
-  });
-
-  arrayRevisiones.forEach((revision) => {
-    //console.log(revision.Cliente);
+  modificarSeleccionados.addEventListener("click", function () {
+    crearModal("¿Desea eliminar permanentemente estos clientes?");
   });
 });
 
