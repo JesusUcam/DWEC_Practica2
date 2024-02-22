@@ -53,6 +53,18 @@ class Vehiculo {
   }
 }
 
+function datosSessionStorage() {
+  sessionStorage.setItem("arrayClientes", JSON.stringify(arrayClientes));
+  sessionStorage.setItem("arrayRevisiones", JSON.stringify(arrayRevisiones));
+  sessionStorage.setItem("arrayVehiculos", JSON.stringify(arrayVehiculos));
+
+  for (let i = 0; i < sessionStorage.length; i++) {
+    let key = sessionStorage.key(i);
+    let value = sessionStorage.getItem(key);
+    console.log(`Clave: ${key}, Valor: ${value}`);
+  }
+}
+
 //MODAL
 function crearModal(x) {
   /* 3 TIPOS DE MODAL (de momento)
@@ -230,11 +242,90 @@ function crearModal(x) {
       formulario.appendChild(fEnviar);
 
       //Boton de enviar
-      fEnviar.textContent = "Pedir Cita";
+      fEnviar.textContent = "Confirmar cita";
+      fEnviar.addEventListener("click", function (event) {
+        // Evitar que el formulario se envíe
+        event.preventDefault();
+
+        // Obtenemos todos los valores de los campos del formulario
+        let nombreCliente = fnombre.value;
+        let dniCliente = fdni.value;
+        let cpCliente = fcp.value;
+        let poblacionCliente = fpoblacion.value;
+        let provinciaCliente = fprovincia.value;
+        let domicilioCliente = fdomicilio.value;
+        let telefonoCliente = ftelefono.value;
+
+        let matriculaVehiculo = fmatricula.value;
+        let marcaVehiculo = fmarca.value;
+        let modeloVehiculo = fmodelo.value;
+        let chasisVehiculo = fchasis.value;
+        let kmVehiculo = fkm.value;
+
+        let fechaEntradaRevision = ffecha_entrada.value;
+        let fechaSalidaRevision = ffecha_salida.value;
+
+        // Creamos un nuevo cliente, un nuevo vehículo y una nueva revisión
+        let cliente1 = new Cliente(
+          nombreCliente,
+          dniCliente,
+          cpCliente,
+          poblacionCliente,
+          provinciaCliente,
+          domicilioCliente,
+          telefonoCliente
+        );
+        let vehiculo1 = new Vehiculo(
+          matriculaVehiculo,
+          marcaVehiculo,
+          modeloVehiculo,
+          chasisVehiculo,
+          kmVehiculo
+        );
+        let revision1 = new Revision(
+          cliente1,
+          vehiculo1,
+          fechaEntradaRevision,
+          fechaSalidaRevision
+        );
+
+        // Guardamos el cliente, el vehículo y la revisión en el array "arrayRevisiones" y en el sessionStorage
+        arrayClientes.push(cliente1);
+        sessionStorage.setItem("arrayClientes", JSON.stringify(arrayClientes));
+
+        arrayVehiculos.push(vehiculo1);
+        sessionStorage.setItem(
+          "arrayVehiculos",
+          JSON.stringify(arrayVehiculos)
+        );
+
+        arrayRevisiones.push(revision1);
+        sessionStorage.setItem(
+          "arrayRevisiones",
+          JSON.stringify(arrayRevisiones)
+        );
+
+        // Cerramos el modal y limpiamos los campos del formulario
+        container.removeChild(modal);
+        fnombre.value = "";
+        fdni.value = "";
+        fcp.value = "";
+        fpoblacion.value = "";
+        fprovincia.value = "";
+        fdomicilio.value = "";
+        ftelefono.value = "";
+        fmatricula.value = "";
+        fmarca.value = "";
+        fmodelo.value = "";
+        fchasis.value = "";
+        fkm.value = "";
+
+        console.log(arrayRevisiones);
+      });
 
       container.appendChild(modal);
-
       break;
+
     //Modificar cliente
     case "cliente":
       let cliente = x;
@@ -382,6 +473,8 @@ fetch("datos.json")
 
 btn_ConsultarCitas.addEventListener("click", function () {
   let tabla = document.createElement("table");
+
+  datosSessionStorage();
   tabla.setAttribute("id", "table-prebuilt");
   tabla.innerHTML = `
     
@@ -516,7 +609,7 @@ btn_GestionarClientes.addEventListener("click", function () {
   let modificarSeleccionados = document.createElement("button");
   modificarSeleccionados.setAttribute("class", "button");
   modificarSeleccionados.setAttribute("id", "modSeleccionados");
-  modificarSeleccionados.textContent = "Mofificar Clientes seleccionados";
+  modificarSeleccionados.textContent = "Eliminar Clientes seleccionados";
 
   container.innerHTML = "";
   container.appendChild(tablaCliente);
