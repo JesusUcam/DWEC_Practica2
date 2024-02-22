@@ -104,6 +104,57 @@ function crearModal(cliente, modo) {
         <input type="submit" value="Enviar">
         `;
 
+    formulario.addEventListener("submit", function (event) {
+      event.preventDefault();
+      let nombre = formulario.querySelector("#nombre").value;
+      let dni = formulario.querySelector("#dni").value;
+      let cp = formulario.querySelector("#cp").value;
+      let poblacion = formulario.querySelector("#poblacion").value;
+      let provincia = formulario.querySelector("#provincia").value;
+      let domicilio = formulario.querySelector("#domicilio").value;
+      let telefono = formulario.querySelector("#telefono").value;
+      let matricula = formulario.querySelector("#matricula").value;
+      let marca = formulario.querySelector("#marca").value;
+      let modelo = formulario.querySelector("#modelo").value;
+      let chasis = formulario.querySelector("#chasis").value;
+      let km = formulario.querySelector("#km").value;
+
+      let datosFormulario = {
+        nombre: nombre,
+        dni: dni,
+        cp: cp,
+        poblacion: poblacion,
+        provincia: provincia,
+        domicilio: domicilio,
+        telefono: telefono,
+        matricula: matricula,
+        marca: marca,
+        modelo: modelo,
+        chasis: chasis,
+        km: km,
+      };
+
+      guardarDatosLocalStorage(
+        arrayClientes,
+        arrayVehiculos,
+        arrayRevisiones,
+        datosFormulario
+      );
+
+      console.log("datos JSON a guardar", datosJSON);
+
+      guardarDatosLocalStorage(
+        arrayClientes,
+        arrayVehiculos,
+        arrayRevisiones,
+        datosFormulario
+      ); // Pasar los datos del formulario a la función
+
+      alert("Datos enviados de forma correcta");
+
+      console.log(localStorage.getItem("datos")); // Cambiado "datos)" por "datos"
+    });
+
     return formulario;
   }
 
@@ -229,7 +280,25 @@ fetch("datos.json")
       let revision = new Revision(cliente, vehiculo, fechaEntrada, fechaSalida);
       arrayRevisiones.push(revision);
     });
+
+    guardarDatosLocalStorage(arrayClientes, arrayVehiculos, arrayRevisiones);
   });
+
+function guardarDatosLocalStorage(
+  clientes,
+  vehiculos,
+  revisiones,
+  datosFormulario
+) {
+  let datos = {
+    clientes: clientes,
+    vehiculos: vehiculos,
+    revisiones: revisiones,
+    formulario: datosFormulario,
+  };
+  let datosJSON = JSON.stringify(datos);
+  localStorage.setItem("datos", datosJSON); // Cambiar la clave a "datos"
+}
 
 btn_ConsultarCitas.addEventListener("click", function () {
   let tabla = document.createElement("table");
@@ -344,7 +413,7 @@ btn_GestionarClientes.addEventListener("click", function () {
     Opción para cambiar al cliente de la cita
     Oprión para registrar un nuevo cliente de forma eficaz
     */
-
+  console.log(localStorage.getItem("datos)"));
   console.log(arrayClientes);
   //TABLA
   let tablaCliente = document.createElement("table");
