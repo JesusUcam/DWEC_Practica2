@@ -2,6 +2,7 @@
 /*HEADER https://www.youtube.com/watch?v=g7H3ZJN5s9Y*/
 
 #header-scroll{
+    z-index: 4;
     position: fixed;
     height: 170px;
     background: deepskyblue;
@@ -30,6 +31,11 @@ h1{
     line-height: 35px;
     font-size: 25px;
 }
-main{
-    height: 10000px;
+#menuBotones{
+    margin-top: 430px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    transition: all 0.3s ease-out;
 }

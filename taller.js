@@ -452,7 +452,6 @@ btn_ConsultarCitas.addEventListener("click", function () {
 
   datosSessionStorage();
   tabla.setAttribute("id", "table-prebuilt");
-  
 
   //THEADER CON FILTROS
   let thfecha_entrada = document.createElement("th");
@@ -470,47 +469,35 @@ btn_ConsultarCitas.addEventListener("click", function () {
   let thchasis = document.createElement("th");
   let thkm = document.createElement("th");
 
-  tabla.appendChild(thfecha_entrada);
   thfecha_entrada.textContent = "Fecha de entrada";
-
-  tabla.appendChild(thfecha_salida);
   thfecha_salida.textContent = "Fecha de salida";
-
-  tabla.appendChild(thnombre);
   thnombre.textContent = "Nombre";
-
-  tabla.appendChild(thdni);
   thdni.textContent = "DNI";
-
-  tabla.appendChild(thcp);
   thcp.textContent = "Codigo Postal";
-
-  tabla.appendChild(thpoblacion);
   thpoblacion.textContent = "Poblacion";
-
-  tabla.appendChild(thprovincia);
   thprovincia.textContent = "Provincia";
-
-  tabla.appendChild(thdomicilio);
   thdomicilio.textContent = "Domicilio";
-
-  tabla.appendChild(thtelefono);
   thtelefono.textContent = "Telefono";
-
-  tabla.appendChild(thmatricula);
   thmatricula.textContent = "Matricula";
-
-  tabla.appendChild(thmarca);
   thmarca.textContent = "Marca";
-
-  tabla.appendChild(thmodelo);
   thmodelo.textContent = "Modelo";
-
-  tabla.appendChild(thchasis);
   thchasis.textContent = "Chasis";
-
-  tabla.appendChild(thkm);
   thkm.textContent = "Kilometros";
+
+  tabla.appendChild(thfecha_entrada);
+  tabla.appendChild(thfecha_salida);
+  tabla.appendChild(thnombre);
+  tabla.appendChild(thdni);
+  tabla.appendChild(thcp);
+  tabla.appendChild(thpoblacion);
+  tabla.appendChild(thprovincia);
+  tabla.appendChild(thdomicilio);
+  tabla.appendChild(thtelefono);
+  tabla.appendChild(thmatricula);
+  tabla.appendChild(thmarca);
+  tabla.appendChild(thmodelo);
+  tabla.appendChild(thchasis);
+  tabla.appendChild(thkm);
 
   //FUNCIONALIDAD FILTROS
   //Ordenar por fecha de entrada
@@ -697,7 +684,104 @@ btn_ConsultarCitas.addEventListener("click", function () {
     btn_ConsultarCitas.click();
   });
 
+  
+  //BUSCADOR 
+  let buscador = document.createElement("div");
 
+  let buqueda = document.createElement("input");
+  buqueda.setAttribute("type", "text");
+  buqueda.setAttribute("placeholder", "Buscar por nombre, dni, matricula...");
+  let btnBuscar = document.createElement("button");
+  btnBuscar.setAttribute("type", "button");
+  btnBuscar.textContent = "Buscar";
+  let filtrarPor = document.createElement("select");
+  filtrarPor.setAttribute("id", "filtrarPor");
+  let opciones = ["Fecha de entrada", "Fecha de salida", "Nombre", "DNI", "Codigo Postal", "Poblacion", "Provincia", "Domicilio", "Telefono", "Matricula", "Marca", "Modelo", "Chasis", "Kilometros"];
+  opciones.forEach((opcion) => {
+    let option = document.createElement("option");
+    option.textContent = opcion;
+    filtrarPor.appendChild(option);
+  });
+
+  buscador.appendChild(buqueda);
+  buscador.appendChild(filtrarPor);
+  buscador.appendChild(btnBuscar);
+
+  //Funcionalidad Buscador
+  btnBuscar.addEventListener("click", function () {
+    let filtro = buqueda.value;
+    let seleccion = filtrarPor.value;
+    let arrayFiltrado = arrayRevisiones.filter((cita) => {
+      let cliente = cita.Cliente;
+      let vehiculo = cita.Vehiculo;
+      let fechaEntrada = cita.fechaEntrada;
+      let fechaSalida = cita.fechaSalida;
+      let nombre = cliente.nombre;
+      let dni = cliente.dni;
+      let cp = cliente.cp;
+      let poblacion = cliente.poblacion;
+      let provincia = cliente.provincia;
+      let domicilio = cliente.domicilio;
+      let telefono = cliente.telefono;
+      let matricula = vehiculo.matricula;
+      let marca = vehiculo.marca;
+      let modelo = vehiculo.modelo;
+      let chasis = vehiculo.chasis;
+      let km = vehiculo.km;
+      switch (seleccion) {
+        case "Fecha de entrada":
+          return fechaEntrada.includes(filtro);
+        case "Fecha de salida":
+          return fechaSalida.includes(filtro);
+        case "Nombre":
+          return nombre.includes(filtro);
+        case "DNI":
+          return dni.includes(filtro);
+        case "Codigo Postal":
+          return cp.includes(filtro);
+        case "Poblacion":
+          return poblacion.includes(filtro);
+        case "Provincia":
+          return provincia.includes(filtro);
+        case "Domicilio":
+          return domicilio.includes(filtro);
+        case "Telefono":
+          return telefono.includes(filtro);
+        case "Matricula":
+          return matricula.includes(filtro);
+        case "Marca":
+          return marca.includes(filtro);
+        case "Modelo":
+          return modelo.includes(filtro);
+        case "Chasis":
+          return chasis.includes(filtro);
+        case "Kilometros":
+          return km.includes(filtro);
+      }
+    });
+
+    tabla.innerHTML = "";
+    tabla.appendChild(thfecha_entrada);
+    tabla.appendChild(thfecha_salida);
+    tabla.appendChild(thnombre);
+    tabla.appendChild(thdni);
+    tabla.appendChild(thcp);
+    tabla.appendChild(thpoblacion);
+    tabla.appendChild(thprovincia);
+    tabla.appendChild(thdomicilio);
+    tabla.appendChild(thtelefono);
+    tabla.appendChild(thmatricula);
+    tabla.appendChild(thmarca);
+    tabla.appendChild(thmodelo);
+    tabla.appendChild(thchasis);
+    tabla.appendChild(thkm);
+
+    arrayFiltrado.forEach((cita) => {
+      tabla.appendChild(crearFila(cita));
+    });
+    
+  });
+  
 
   //Creacion de la tabla
 
@@ -705,6 +789,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
     tabla.appendChild(crearFila(cita));
   });
   container.innerHTML = "";
+  container.appendChild(buscador);
   container.appendChild(tabla);
 });
 
@@ -902,28 +987,3 @@ function crearFila(cita) {
 
   return fila;
 }
-
-function inicio() {
-  let menuContent = document.createElement("ul");
-
-  let opcion1 = document.createElement("li");
-  opcion1.textContent = "Consultar cita";
-
-  let opcion2 = document.createElement("li");
-  opcion2.textContent = "Pedir cita";
-
-  let opcion3 = document.createElement("li");
-  opcion3.textContent = "Gestionar clientes";
-
-  let opcion4 = document.createElement("li");
-  opcion4.textContent = "Tueno pro";
-
-  menuContent.appendChild(opcion1);
-  menuContent.appendChild(opcion2);
-  menuContent.appendChild(opcion3);
-  menuContent.appendChild(opcion4);
-
-  container.after(menuContent);
-}
-
-inicio();
