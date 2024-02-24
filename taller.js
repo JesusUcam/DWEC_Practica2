@@ -53,10 +53,22 @@ class Vehiculo {
   }
 }
 
+function datosSessionStorage() {
+  sessionStorage.setItem("arrayClientes", JSON.stringify(arrayClientes));
+  sessionStorage.setItem("arrayRevisiones", JSON.stringify(arrayRevisiones));
+  sessionStorage.setItem("arrayVehiculos", JSON.stringify(arrayVehiculos));
+
+  for (let i = 0; i < sessionStorage.length; i++) {
+    let key = sessionStorage.key(i);
+    let value = sessionStorage.getItem(key);
+    console.log(`Clave: ${key}, Valor: ${value}`);
+  }
+}
+
 //MODAL
 function crearModal(x) {
-
-/* 3 TIPOS DE MODAL (de momento)
+  
+  /* 3 TIPOS DE MODAL (de momento)
     - Para pedir revisión
     - Para modificar Clientes
     - Para confirmar acción (si/no)
@@ -64,7 +76,7 @@ function crearModal(x) {
     - Sobran parámetros
     - Hay que cambiar la construcción del form
 */
-
+  
   //DECLARACIÓN 
   let modal = document.createElement("div");
   modal.setAttribute("class", "modal");
@@ -89,79 +101,76 @@ function crearModal(x) {
   let formulario = document.createElement("form");
   formulario.setAttribute("style", "display: flex; flex-direction: column; justify-content: center;");
   
-  
   //CAMPOS DEL FORMULARIO
   let fnombre = document.createElement("input");
   fnombre.setAttribute("type", "text");
   fnombre.setAttribute("placeholder", "Nombre");
-  
+
   let fdni = document.createElement("input");
   fdni.setAttribute("type", "text");
   fdni.setAttribute("placeholder", "DNI");
-  
+
   let ffecha_entrada = document.createElement("input");
   ffecha_entrada.setAttribute("type", "date");
-  
+
   let ffecha_salida = document.createElement("input");
   ffecha_salida.setAttribute("type", "date");
-  
+
   let fcp = document.createElement("input");
   fcp.setAttribute("type", "number");
   fcp.setAttribute("placeholder", "Codigo Postal");
-  
+
   let fpoblacion = document.createElement("input");
   fpoblacion.setAttribute("type", "text");
   fpoblacion.setAttribute("placeholder", "Poblacion");
-  
+
   let fprovincia = document.createElement("input");
   fprovincia.setAttribute("type", "text");
   fprovincia.setAttribute("placeholder", "Provincia");
-  
+
   let fdomicilio = document.createElement("input");
   fdomicilio.setAttribute("type", "text");
   fdomicilio.setAttribute("placeholder", "Domicilio");
-  
+
   let ftelefono = document.createElement("input");
   ftelefono.setAttribute("type", "text");
   ftelefono.setAttribute("placeholder", "Telefono");
-  
+
   let fmatricula = document.createElement("input");
   fmatricula.setAttribute("type", "text");
   fmatricula.setAttribute("placeholder", "Matricula");
-  
+
   let fmarca = document.createElement("input");
   fmarca.setAttribute("type", "text");
   fmarca.setAttribute("placeholder", "Marca");
-  
+
   let fmodelo = document.createElement("input");
   fmodelo.setAttribute("type", "text");
   fmodelo.setAttribute("placeholder", "modelo");
-  
+
   let fchasis = document.createElement("input");
   fchasis.setAttribute("type", "text");
   fchasis.setAttribute("placeholder", "chasis");
-  
+
   let fkm = document.createElement("input");
   fkm.setAttribute("type", "text");
   fkm.setAttribute("placeholder", "Kilometros");
-  
+
   let fEnviar = document.createElement("button");
   fEnviar.setAttribute("class", "button");
   
   //Factor común del modal
   let tituloHeader = document.createElement("h2");
-  
+
   modalHeader.appendChild(close); //
   modalHeader.appendChild(tituloHeader); //
-  
+
   modalBody.appendChild(formulario); //
-  
+
   modalContent.appendChild(modalHeader); //
-  modalContent.appendChild(modalBody);//
-  modal.appendChild(modalContent);//
-  
-  
-  
+  modalContent.appendChild(modalBody); //
+  modal.appendChild(modalContent); //
+
   let modo = "";
   //Comprobación para saber que modal necesitamos
   if (arrayClientes.includes(x)) {
@@ -172,12 +181,12 @@ function crearModal(x) {
   } else if (arrayVehiculos.includes(x)) {
     console.log("Es un vehiculo");
     modo = "vehiculo"; //No se usa todavia
-  } else if (x=="nuevo") {
+  } else if (x == "nuevo") {
     console.log("Pedir cita");
-    modo=x; 
+    modo = x;
   } else {
     console.log("Confirmar");
-    modo="confirmar";
+    modo = "confirmar";
   }
 
   switch (modo) {
@@ -203,12 +212,92 @@ function crearModal(x) {
       formulario.appendChild(fkm);
       formulario.appendChild(fEnviar);
       
+
       //Boton de enviar
-      fEnviar.textContent = "Pedir Cita";
+      fEnviar.textContent = "Confirmar cita";
+      fEnviar.addEventListener("click", function (event) {
+        // Evitar que el formulario se envíe
+        event.preventDefault();
+
+        // Obtenemos todos los valores de los campos del formulario
+        let nombreCliente = fnombre.value;
+        let dniCliente = fdni.value;
+        let cpCliente = fcp.value;
+        let poblacionCliente = fpoblacion.value;
+        let provinciaCliente = fprovincia.value;
+        let domicilioCliente = fdomicilio.value;
+        let telefonoCliente = ftelefono.value;
+
+        let matriculaVehiculo = fmatricula.value;
+        let marcaVehiculo = fmarca.value;
+        let modeloVehiculo = fmodelo.value;
+        let chasisVehiculo = fchasis.value;
+        let kmVehiculo = fkm.value;
+
+        let fechaEntradaRevision = ffecha_entrada.value;
+        let fechaSalidaRevision = ffecha_salida.value;
+
+        // Creamos un nuevo cliente, un nuevo vehículo y una nueva revisión
+        let cliente1 = new Cliente(
+          nombreCliente,
+          dniCliente,
+          cpCliente,
+          poblacionCliente,
+          provinciaCliente,
+          domicilioCliente,
+          telefonoCliente
+        );
+        let vehiculo1 = new Vehiculo(
+          matriculaVehiculo,
+          marcaVehiculo,
+          modeloVehiculo,
+          chasisVehiculo,
+          kmVehiculo
+        );
+        let revision1 = new Revision(
+          cliente1,
+          vehiculo1,
+          fechaEntradaRevision,
+          fechaSalidaRevision
+        );
+
+        // Guardamos el cliente, el vehículo y la revisión en el array "arrayRevisiones" y en el sessionStorage
+        arrayClientes.push(cliente1);
+        sessionStorage.setItem("arrayClientes", JSON.stringify(arrayClientes));
+
+        arrayVehiculos.push(vehiculo1);
+        sessionStorage.setItem(
+          "arrayVehiculos",
+          JSON.stringify(arrayVehiculos)
+        );
+
+        arrayRevisiones.push(revision1);
+        sessionStorage.setItem(
+          "arrayRevisiones",
+          JSON.stringify(arrayRevisiones)
+        );
+
+        // Cerramos el modal y limpiamos los campos del formulario
+        container.removeChild(modal);
+        fnombre.value = "";
+        fdni.value = "";
+        fcp.value = "";
+        fpoblacion.value = "";
+        fprovincia.value = "";
+        fdomicilio.value = "";
+        ftelefono.value = "";
+        fmatricula.value = "";
+        fmarca.value = "";
+        fmodelo.value = "";
+        fchasis.value = "";
+        fkm.value = "";
+
+        console.log(arrayRevisiones);
+      });
 
       container.appendChild(modal);
-
       break;
+
     //Modificar cliente
     case "cliente":
       
@@ -240,7 +329,7 @@ function crearModal(x) {
       container.appendChild(modal);
       break;
     case "confirmar":
-
+      
       tituloHeader.textContent = x;
 
       let si = document.createElement("button");
@@ -250,18 +339,20 @@ function crearModal(x) {
       si.textContent = "Confirmar";
       no.textContent = "Cancelar ";
 
-      modalBody.setAttribute("style", "display: flex; justify-content: center;");
+      
+      modalBody.setAttribute(
+        "style",
+        "display: flex; justify-content: center;"
+      );
       modalBody.appendChild(si);
       modalBody.appendChild(no);
 
       //EventListeners
       si.addEventListener("click", function () {
-        
-      clientesSeleccionados = document.getElementsByClassName("filaSeleccionada");
+        clientesSeleccionados =
+          document.getElementsByClassName("filaSeleccionada");
 
         for (let i = 0; i < clientesSeleccionados.length; i++) {
-          
-          
           let c = clientesSeleccionados[i].id;
 
           arrayClientes.forEach((clienteA) => {
@@ -391,6 +482,8 @@ btn_ConsultarCitas.addEventListener("click", function () {
 
   //Tabla de revisiones
   let tabla = document.createElement("table");
+
+  datosSessionStorage();
   tabla.setAttribute("id", "table-prebuilt");
 
   //THEADER CON FILTROS
@@ -753,16 +846,14 @@ btn_GestionarClientes.addEventListener("click", function () {
   let modificarSeleccionados = document.createElement("button");
   modificarSeleccionados.setAttribute("class", "button");
   modificarSeleccionados.setAttribute("id", "modSeleccionados");
-  modificarSeleccionados.textContent = "Mofificar Clientes seleccionados";
+  modificarSeleccionados.textContent = "Eliminar Clientes seleccionados";
 
   container.innerHTML = "";
   container.appendChild(tablaCliente);
   container.appendChild(modificarSeleccionados);
 
   modificarSeleccionados.addEventListener("click", function () {
-
     crearModal("¿Desea eliminar permanentemente estos clientes?");
-    
   });
 
 });
