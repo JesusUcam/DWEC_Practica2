@@ -452,23 +452,254 @@ btn_ConsultarCitas.addEventListener("click", function () {
 
   datosSessionStorage();
   tabla.setAttribute("id", "table-prebuilt");
-  tabla.innerHTML = `
-    
-    <thead>   
-    </thead><th>Fecha de Entrada</th>
-                        <th>Fecha Salida (estimada)</th>
-                        <th>Cliente</th>
-                        <th>DNI</th>
-                        <th>Codigo Postal</th>
-                        <th>poblacion</th>
-                        <th>provincia</th>
-                        <th>domicilio</th>
-                        <th>telefono</th>
-                        <th>matricula</th>
-                        <th>marca</th>
-                        <th>modelo</th>
-                        <th>chasis</th>
-                        <th>KM</th>`;
+  
+
+  //THEADER CON FILTROS
+  let thfecha_entrada = document.createElement("th");
+  let thfecha_salida = document.createElement("th");
+  let thnombre = document.createElement("th");
+  let thdni = document.createElement("th");
+  let thcp = document.createElement("th");
+  let thpoblacion = document.createElement("th");
+  let thprovincia = document.createElement("th");
+  let thdomicilio = document.createElement("th");
+  let thtelefono = document.createElement("th");
+  let thmatricula = document.createElement("th");
+  let thmarca = document.createElement("th");
+  let thmodelo = document.createElement("th");
+  let thchasis = document.createElement("th");
+  let thkm = document.createElement("th");
+
+  tabla.appendChild(thfecha_entrada);
+  thfecha_entrada.textContent = "Fecha de entrada";
+
+  tabla.appendChild(thfecha_salida);
+  thfecha_salida.textContent = "Fecha de salida";
+
+  tabla.appendChild(thnombre);
+  thnombre.textContent = "Nombre";
+
+  tabla.appendChild(thdni);
+  thdni.textContent = "DNI";
+
+  tabla.appendChild(thcp);
+  thcp.textContent = "Codigo Postal";
+
+  tabla.appendChild(thpoblacion);
+  thpoblacion.textContent = "Poblacion";
+
+  tabla.appendChild(thprovincia);
+  thprovincia.textContent = "Provincia";
+
+  tabla.appendChild(thdomicilio);
+  thdomicilio.textContent = "Domicilio";
+
+  tabla.appendChild(thtelefono);
+  thtelefono.textContent = "Telefono";
+
+  tabla.appendChild(thmatricula);
+  thmatricula.textContent = "Matricula";
+
+  tabla.appendChild(thmarca);
+  thmarca.textContent = "Marca";
+
+  tabla.appendChild(thmodelo);
+  thmodelo.textContent = "Modelo";
+
+  tabla.appendChild(thchasis);
+  thchasis.textContent = "Chasis";
+
+  tabla.appendChild(thkm);
+  thkm.textContent = "Kilometros";
+
+  //FUNCIONALIDAD FILTROS
+  //Ordenar por fecha de entrada
+  thfecha_entrada.addEventListener("click", function () {
+    arrayRevisiones.sort((revision1, revision2) => {
+      if (revision1.fechaEntrada < revision2.fechaEntrada) {
+        return -1;
+      }
+      if (revision1.fechaEntrada > revision2.fechaEntrada) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+
+  //Ordenar por fecha de entrada
+  thfecha_salida.addEventListener("click", function () {
+    arrayRevisiones.sort((revision1, revision2) => {
+      if (revision1.fechaSalida < revision2.fechaSalida) {
+        return -1;
+      }
+      if (revision1.fechaSalida > revision2.fechaSalida) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por nombre
+  thnombre.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.nombre < b.Cliente.nombre) {
+        return -1;
+      }
+      if (a.Cliente.nombre > b.Cliente.nombre) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por dni
+  thdni.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.dni < b.Cliente.dni) {
+        return -1;
+      }
+      if (a.Cliente.dni > b.Cliente.dni) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por telefono
+  thtelefono.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.telefono < b.Cliente.telefono) {
+        return -1;
+      }
+      if (a.Cliente.telefono > b.Cliente.telefono) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por cp
+  thcp.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.cp < b.Cliente.cp) {
+        return -1;
+      }
+      if (a.Cliente.cp > b.Cliente.cp) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por poblacion
+  thpoblacion.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.poblacion < b.Cliente.poblacion) {
+        return -1;
+      }
+      if (a.Cliente.poblacion > b.Cliente.poblacion) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por provincia
+  thprovincia.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.provincia < b.Cliente.provincia) {
+        return -1;
+      }
+      if (a.Cliente.provincia > b.Cliente.provincia) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por domicilio
+  thdomicilio.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.domicilio < b.Cliente.domicilio) {
+        return -1;
+      }
+      if (a.Cliente.domicilio > b.Cliente.domicilio) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por matricula
+  thmatricula.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.matricula < b.Vehiculo.matricula) {
+        return -1;
+      }
+      if (a.Vehiculo.matricula > b.Vehiculo.matricula) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por marca
+  thmarca.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.marca < b.Vehiculo.marca) {
+        return -1;
+      }
+      if (a.Vehiculo.marca > b.Vehiculo.marca) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por modelo
+  thmodelo.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.modelo < b.Vehiculo.modelo) {
+        return -1;
+      }
+      if (a.Vehiculo.modelo > b.Vehiculo.modelo) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por chasis
+  thchasis.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.chasis < b.Vehiculo.chasis) {
+        return -1;
+      }
+      if (a.Vehiculo.chasis > b.Vehiculo.chasis) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por km
+  thkm.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.km < b.Vehiculo.km) {
+        return -1;
+      }
+      if (a.Vehiculo.km > b.Vehiculo.km) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+
+
+
+  //Creacion de la tabla
 
   arrayRevisiones.forEach((cita) => {
     tabla.appendChild(crearFila(cita));
