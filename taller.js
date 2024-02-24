@@ -501,6 +501,335 @@ btn_ConsultarCitas.addEventListener("click", function () {
   let thmodelo = document.createElement("th");
   let thchasis = document.createElement("th");
   let thkm = document.createElement("th");
+
+  thfecha_entrada.textContent = "Fecha de entrada";
+  thfecha_salida.textContent = "Fecha de salida";
+  thnombre.textContent = "Nombre";
+  thdni.textContent = "DNI";
+  thcp.textContent = "Codigo Postal";
+  thpoblacion.textContent = "Poblacion";
+  thprovincia.textContent = "Provincia";
+  thdomicilio.textContent = "Domicilio";
+  thtelefono.textContent = "Telefono";
+  thmatricula.textContent = "Matricula";
+  thmarca.textContent = "Marca";
+  thmodelo.textContent = "Modelo";
+  thchasis.textContent = "Chasis";
+  thkm.textContent = "Kilometros";
+
+  tabla.appendChild(thfecha_entrada);
+  tabla.appendChild(thfecha_salida);
+  tabla.appendChild(thnombre);
+  tabla.appendChild(thdni);
+  tabla.appendChild(thcp);
+  tabla.appendChild(thpoblacion);
+  tabla.appendChild(thprovincia);
+  tabla.appendChild(thdomicilio);
+  tabla.appendChild(thtelefono);
+  tabla.appendChild(thmatricula);
+  tabla.appendChild(thmarca);
+  tabla.appendChild(thmodelo);
+  tabla.appendChild(thchasis);
+  tabla.appendChild(thkm);
+
+  //FUNCIONALIDAD FILTROS
+  //Ordenar por fecha de entrada
+  thfecha_entrada.addEventListener("click", function () {
+    arrayRevisiones.sort((revision1, revision2) => {
+      if (revision1.fechaEntrada < revision2.fechaEntrada) {
+        return -1;
+      }
+      if (revision1.fechaEntrada > revision2.fechaEntrada) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+
+  //Ordenar por fecha de entrada
+  thfecha_salida.addEventListener("click", function () {
+    arrayRevisiones.sort((revision1, revision2) => {
+      if (revision1.fechaSalida < revision2.fechaSalida) {
+        return -1;
+      }
+      if (revision1.fechaSalida > revision2.fechaSalida) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por nombre
+  thnombre.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.nombre < b.Cliente.nombre) {
+        return -1;
+      }
+      if (a.Cliente.nombre > b.Cliente.nombre) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por dni
+  thdni.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.dni < b.Cliente.dni) {
+        return -1;
+      }
+      if (a.Cliente.dni > b.Cliente.dni) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por telefono
+  thtelefono.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.telefono < b.Cliente.telefono) {
+        return -1;
+      }
+      if (a.Cliente.telefono > b.Cliente.telefono) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por cp
+  thcp.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.cp < b.Cliente.cp) {
+        return -1;
+      }
+      if (a.Cliente.cp > b.Cliente.cp) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por poblacion
+  thpoblacion.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.poblacion < b.Cliente.poblacion) {
+        return -1;
+      }
+      if (a.Cliente.poblacion > b.Cliente.poblacion) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por provincia
+  thprovincia.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.provincia < b.Cliente.provincia) {
+        return -1;
+      }
+      if (a.Cliente.provincia > b.Cliente.provincia) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por domicilio
+  thdomicilio.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Cliente.domicilio < b.Cliente.domicilio) {
+        return -1;
+      }
+      if (a.Cliente.domicilio > b.Cliente.domicilio) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por matricula
+  thmatricula.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.matricula < b.Vehiculo.matricula) {
+        return -1;
+      }
+      if (a.Vehiculo.matricula > b.Vehiculo.matricula) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por marca
+  thmarca.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.marca < b.Vehiculo.marca) {
+        return -1;
+      }
+      if (a.Vehiculo.marca > b.Vehiculo.marca) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por modelo
+  thmodelo.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.modelo < b.Vehiculo.modelo) {
+        return -1;
+      }
+      if (a.Vehiculo.modelo > b.Vehiculo.modelo) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por chasis
+  thchasis.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.chasis < b.Vehiculo.chasis) {
+        return -1;
+      }
+      if (a.Vehiculo.chasis > b.Vehiculo.chasis) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+  //Ordenar por km
+  thkm.addEventListener("click", function () {
+    arrayRevisiones.sort((a, b) => {
+      if (a.Vehiculo.km < b.Vehiculo.km) {
+        return -1;
+      }
+      if (a.Vehiculo.km > b.Vehiculo.km) {
+        return 1;
+      }
+      return 0;
+    });
+    btn_ConsultarCitas.click();
+  });
+
+  
+  //BUSCADOR 
+  let buscador = document.createElement("div");
+
+  let buqueda = document.createElement("input");
+  buqueda.setAttribute("type", "text");
+  buqueda.setAttribute("placeholder", "Buscar por nombre, dni, matricula...");
+  let btnBuscar = document.createElement("button");
+  btnBuscar.setAttribute("type", "button");
+  btnBuscar.textContent = "Buscar";
+  let filtrarPor = document.createElement("select");
+  filtrarPor.setAttribute("id", "filtrarPor");
+  let opciones = ["Fecha de entrada", "Fecha de salida", "Nombre", "DNI", "Codigo Postal", "Poblacion", "Provincia", "Domicilio", "Telefono", "Matricula", "Marca", "Modelo", "Chasis", "Kilometros"];
+  opciones.forEach((opcion) => {
+    let option = document.createElement("option");
+    option.textContent = opcion;
+    filtrarPor.appendChild(option);
+  });
+
+  buscador.appendChild(buqueda);
+  buscador.appendChild(filtrarPor);
+  buscador.appendChild(btnBuscar);
+
+  //Funcionalidad Buscador
+  btnBuscar.addEventListener("click", function () {
+    let filtro = buqueda.value;
+    let seleccion = filtrarPor.value;
+    let arrayFiltrado = arrayRevisiones.filter((cita) => {
+      let cliente = cita.Cliente;
+      let vehiculo = cita.Vehiculo;
+      let fechaEntrada = cita.fechaEntrada;
+      let fechaSalida = cita.fechaSalida;
+      let nombre = cliente.nombre;
+      let dni = cliente.dni;
+      let cp = cliente.cp;
+      let poblacion = cliente.poblacion;
+      let provincia = cliente.provincia;
+      let domicilio = cliente.domicilio;
+      let telefono = cliente.telefono;
+      let matricula = vehiculo.matricula;
+      let marca = vehiculo.marca;
+      let modelo = vehiculo.modelo;
+      let chasis = vehiculo.chasis;
+      let km = vehiculo.km;
+      switch (seleccion) {
+        case "Fecha de entrada":
+          return fechaEntrada.includes(filtro);
+        case "Fecha de salida":
+          return fechaSalida.includes(filtro);
+        case "Nombre":
+          return nombre.includes(filtro);
+        case "DNI":
+          return dni.includes(filtro);
+        case "Codigo Postal":
+          return cp.includes(filtro);
+        case "Poblacion":
+          return poblacion.includes(filtro);
+        case "Provincia":
+          return provincia.includes(filtro);
+        case "Domicilio":
+          return domicilio.includes(filtro);
+        case "Telefono":
+          return telefono.includes(filtro);
+        case "Matricula":
+          return matricula.includes(filtro);
+        case "Marca":
+          return marca.includes(filtro);
+        case "Modelo":
+          return modelo.includes(filtro);
+        case "Chasis":
+          return chasis.includes(filtro);
+        case "Kilometros":
+          return km.includes(filtro);
+      }
+    });
+
+    tabla.innerHTML = "";
+    tabla.appendChild(thfecha_entrada);
+    tabla.appendChild(thfecha_salida);
+    tabla.appendChild(thnombre);
+    tabla.appendChild(thdni);
+    tabla.appendChild(thcp);
+    tabla.appendChild(thpoblacion);
+    tabla.appendChild(thprovincia);
+    tabla.appendChild(thdomicilio);
+    tabla.appendChild(thtelefono);
+    tabla.appendChild(thmatricula);
+    tabla.appendChild(thmarca);
+    tabla.appendChild(thmodelo);
+    tabla.appendChild(thchasis);
+    tabla.appendChild(thkm);
+
+    arrayFiltrado.forEach((cita) => {
+      tabla.appendChild(crearFila(cita));
+    });
+    
+  });
+
+  //THEADER CON FILTROS
+  let thfecha_entrada = document.createElement("th");
+  let thfecha_salida = document.createElement("th");
+  let thnombre = document.createElement("th");
+  let thdni = document.createElement("th");
+  let thcp = document.createElement("th");
+  let thpoblacion = document.createElement("th");
+  let thprovincia = document.createElement("th");
+  let thdomicilio = document.createElement("th");
+  let thtelefono = document.createElement("th");
+  let thmatricula = document.createElement("th");
+  let thmarca = document.createElement("th");
+  let thmodelo = document.createElement("th");
+  let thchasis = document.createElement("th");
+  let thkm = document.createElement("th");
   
   tabla.appendChild(thfecha_entrada);
   thfecha_entrada.textContent = "Fecha de entrada";
@@ -735,6 +1064,8 @@ btn_ConsultarCitas.addEventListener("click", function () {
   arrayRevisiones.forEach((cita) => {
     tabla.appendChild(crearFila(cita));
   });
+  container.innerHTML = "";
+  container.appendChild(buscador);
   container.appendChild(tabla);
 });
 
@@ -931,4 +1262,3 @@ function crearFila(cita) {
   fila.appendChild(celda14);
 
   return fila;
-}
