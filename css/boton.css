@@ -18,7 +18,16 @@
     overflow: hidden;
     font-size: 15px;
   }
-  
+
+  /*mi boton*/
+#modSeleccionados {
+  position: sticky;
+  bottom: 10px; /* Ajusta la posición según tu preferencia */
+  right: 10px; /* Ajusta la posición según tu preferencia */
+  z-index: 1; /* Asegura que el botón esté por encima del contenido desplazado */
+  padding: 10px; /* Ajusta el espacio interno del botón según tu preferencia */
+}
+
   .icon {
     width: 24px;
     height: 24px;

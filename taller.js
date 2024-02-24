@@ -67,6 +67,7 @@ function datosSessionStorage() {
 
 //MODAL
 function crearModal(x) {
+  
   /* 3 TIPOS DE MODAL (de momento)
     - Para pedir revisión
     - Para modificar Clientes
@@ -75,8 +76,8 @@ function crearModal(x) {
     - Sobran parámetros
     - Hay que cambiar la construcción del form
 */
-
-  //DECLARACIÓN
+  
+  //DECLARACIÓN 
   let modal = document.createElement("div");
   modal.setAttribute("class", "modal");
 
@@ -98,11 +99,8 @@ function crearModal(x) {
 
   //FORMULARIO
   let formulario = document.createElement("form");
-  formulario.setAttribute(
-    "style",
-    "display: flex; flex-direction: column; justify-content: center;"
-  );
-
+  formulario.setAttribute("style", "display: flex; flex-direction: column; justify-content: center;");
+  
   //CAMPOS DEL FORMULARIO
   let fnombre = document.createElement("input");
   fnombre.setAttribute("type", "text");
@@ -161,34 +159,6 @@ function crearModal(x) {
   let fEnviar = document.createElement("button");
   fEnviar.setAttribute("class", "button");
 
-  /*formulario.innerHTML = `
-  <label for="nombre">Nombre</label>
-  <input type="text" id="nombre" name="nombre" required>
-  <label for="dni">DNI</label>
-  <input type="text" id="dni" name="dni" required>
-  <label for="cp">Codigo Postal</label>
-  <input type="text" id="cp" name="cp" required>
-  <label for="poblacion">Poblacion</label>
-  <input type="text" id="poblacion" name="poblacion" required>
-  <label for="provincia">Provincia</label>
-  <input type="text" id="provincia" name="provincia" required>
-  <label for="domicilio">Domicilio</label>
-  <input type="text" id="domicilio" name="domicilio" required>
-  <label for="telefono">Telefono</label>
-  <input type="text" id="telefono" name="telefono" required>
-  <label for "matricula">Matricula</label>
-  <input type="text" id="matricula" name="matricula" required>
-  <label for="marca">Marca</label>
-  <input type="text" id="marca" name="marca" required>
-  <label for="modelo">Modelo</label>
-  <input type="text" id="modelo" name="modelo" required>
-  <label for="chasis">Chasis</label>
-  <input type="text" id="chasis" name="chasis" required>
-  <label for="km">Kilometros</label>
-  <input type="text" id="km" name="km" required>
-  <input type="submit" value="Enviar">
-  `;*/
-
   //Factor común del modal
   let tituloHeader = document.createElement("h2");
 
@@ -222,6 +192,7 @@ function crearModal(x) {
   switch (modo) {
     //Pedir cita
     case "nuevo":
+      
       tituloHeader.textContent = "Nueva cita";
 
       //MEJORA: Los campos de cliente se pueden simplificar con un select
@@ -240,6 +211,7 @@ function crearModal(x) {
       formulario.appendChild(fchasis);
       formulario.appendChild(fkm);
       formulario.appendChild(fEnviar);
+      
 
       //Boton de enviar
       fEnviar.textContent = "Confirmar cita";
@@ -328,6 +300,7 @@ function crearModal(x) {
 
     //Modificar cliente
     case "cliente":
+      
       let cliente = x;
       tituloHeader.textContent = "Modificar cita";
 
@@ -349,13 +322,14 @@ function crearModal(x) {
       fprovincia.value = cliente.provincia;
       fdomicilio.value = cliente.domicilio;
       ftelefono.value = cliente.telefono;
-
+      
       //Boton de enviar
       fEnviar.textContent = "Guardar Modificaciones";
 
       container.appendChild(modal);
       break;
     case "confirmar":
+      
       tituloHeader.textContent = x;
 
       let si = document.createElement("button");
@@ -365,6 +339,7 @@ function crearModal(x) {
       si.textContent = "Confirmar";
       no.textContent = "Cancelar ";
 
+      
       modalBody.setAttribute(
         "style",
         "display: flex; justify-content: center;"
@@ -389,6 +364,7 @@ function crearModal(x) {
         }
 
         btn_GestionarClientes.click();
+        
       });
 
       no.addEventListener("click", function () {
@@ -618,6 +594,7 @@ btn_GestionarClientes.addEventListener("click", function () {
   modificarSeleccionados.addEventListener("click", function () {
     crearModal("¿Desea eliminar permanentemente estos clientes?");
   });
+
 });
 
 btn_Tuneo.addEventListener("click", function () {});
