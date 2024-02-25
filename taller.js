@@ -166,14 +166,14 @@ function crearModal(x) {
   //Factor común del modal
   let tituloHeader = document.createElement("h2");
 
-  modalHeader.appendChild(close); //
-  modalHeader.appendChild(tituloHeader); //
+  modalHeader.appendChild(close); 
+  modalHeader.appendChild(tituloHeader); 
 
-  modalBody.appendChild(formulario); //
+  modalBody.appendChild(formulario); 
 
-  modalContent.appendChild(modalHeader); //
-  modalContent.appendChild(modalBody); //
-  modal.appendChild(modalContent); //
+  modalContent.appendChild(modalHeader); 
+  modalContent.appendChild(modalBody); 
+  modal.appendChild(modalContent); 
 
   let modo = "";
   //Comprobación para saber que modal necesitamos
@@ -198,7 +198,6 @@ function crearModal(x) {
     case "nuevo":
       tituloHeader.textContent = "Nueva cita";
 
-      //MEJORA: Los campos de cliente se pueden simplificar con un select
       formulario.appendChild(fnombre);
       formulario.appendChild(fdni);
       formulario.appendChild(ffecha_entrada);
@@ -408,7 +407,6 @@ function crearModal(x) {
 
       no.addEventListener("click", function () {
         container.removeChild(modal);
-        return false;
       });
 
       container.appendChild(modal);
@@ -423,7 +421,7 @@ function registrarCliente(cliente) {
   );
   if (!clienteExiste) {
     arrayClientes.push(cliente);
-  } //MEJORA: controlar que un cliente con el mismo DNI deba tener los mismos datos
+  } 
 }
 function registrarVehiculo(vehiculo) {
   let vehiculoExiste = arrayVehiculos.find(
@@ -433,7 +431,7 @@ function registrarVehiculo(vehiculo) {
     arrayVehiculos.push(vehiculo);
   } else {
     console.log(`${vehiculo.matricula}---`);
-  } //MEJORA: controlar que un vehiculo con la misma matricula deba tener los mismos datos
+  } 
 }
 
 let container = document.getElementById("container");
@@ -848,7 +846,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
 // FORMULARIO DE REGISTRO DE CLIENTES
 
 //MODIFICAR CLIENTES
-crearFilaCliente = (cliente) => {
+function crearFilaCliente(cliente) {
   let fila = document.createElement("tr");
   fila.setAttribute("id", cliente.dni);
 
@@ -896,7 +894,7 @@ crearFilaCliente = (cliente) => {
   btnsCelda.appendChild(btnModificarCl);
   fila.appendChild(btnsCelda);
 
-  //Eventons
+  //Eventos
   btnEliminarCl.addEventListener("click", function () {
     arrayClientes.forEach((clienteA) => {
       if (clienteA.dni === cliente.dni) {
@@ -954,8 +952,6 @@ btn_GestionarClientes.addEventListener("click", function () {
     crearModal("¿Desea eliminar permanentemente estos clientes?");
   });
 });
-
-btn_Tuneo.addEventListener("click", function () {});
 
 function crearFila(cita) {
   let cliente = cita.Cliente;
