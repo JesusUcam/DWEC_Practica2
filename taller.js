@@ -19,7 +19,7 @@ Crear una aplicación que me permita:
 
 
 ** IMPORTANTE: Organización y limpieza del código. El json debe llevar datos ficticios y tener bastante información de los clientes, coches, cita.revisiones, ...
-*/ 
+*/
 
 let clase_botones = "button";
 
@@ -69,7 +69,6 @@ function datosSessionStorage() {
 
 //MODAL
 function crearModal(x) {
-  
   /* 3 TIPOS DE MODAL (de momento)
     - Para pedir revisión
     - Para modificar Clientes
@@ -78,8 +77,8 @@ function crearModal(x) {
     - Sobran parámetros
     - Hay que cambiar la construcción del form
 */
-  
-  //DECLARACIÓN 
+
+  //DECLARACIÓN
   let modal = document.createElement("div");
   modal.setAttribute("class", "modal");
 
@@ -101,8 +100,11 @@ function crearModal(x) {
 
   //FORMULARIO
   let formulario = document.createElement("form");
-  formulario.setAttribute("style", "display: flex; flex-direction: column; justify-content: center;");
-  
+  formulario.setAttribute(
+    "style",
+    "display: flex; flex-direction: column; justify-content: center;"
+  );
+
   //CAMPOS DEL FORMULARIO
   let fnombre = document.createElement("input");
   fnombre.setAttribute("type", "text");
@@ -160,7 +162,7 @@ function crearModal(x) {
 
   let fEnviar = document.createElement("button");
   fEnviar.setAttribute("class", clase_botones);
-  
+
   //Factor común del modal
   let tituloHeader = document.createElement("h2");
 
@@ -194,7 +196,6 @@ function crearModal(x) {
   switch (modo) {
     //Pedir cita
     case "nuevo":
-      
       tituloHeader.textContent = "Nueva cita";
 
       //MEJORA: Los campos de cliente se pueden simplificar con un select
@@ -213,7 +214,6 @@ function crearModal(x) {
       formulario.appendChild(fchasis);
       formulario.appendChild(fkm);
       formulario.appendChild(fEnviar);
-      
 
       //Boton de enviar
       fEnviar.textContent = "Confirmar cita";
@@ -300,14 +300,12 @@ function crearModal(x) {
       container.appendChild(modal);
       break;
 
-    //Modificar cliente
+    // Boton de enviar
     case "cliente":
-      
       let cliente = x;
       tituloHeader.textContent = "Modificar cita";
 
       // Agregar los datos del cliente al formulario
-
       formulario.appendChild(fnombre);
       formulario.appendChild(fdni);
       formulario.appendChild(fcp);
@@ -324,14 +322,55 @@ function crearModal(x) {
       fprovincia.value = cliente.provincia;
       fdomicilio.value = cliente.domicilio;
       ftelefono.value = cliente.telefono;
-      
-      //Boton de enviar
-      fEnviar.textContent = "Guardar Modificaciones";
+
+      // Boton de enviar
+      fEnviar.textContent = "Modificar cliente";
+      fEnviar.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Recuperar los valores actualizados del formulario
+        let nombreModificado = fnombre.value;
+        let dniModificado = fdni.value;
+        let cpModificado = fcp.value;
+        let poblacionModificado = fpoblacion.value;
+        let provinciaModificado = fprovincia.value;
+        let domicilioModificado = fdomicilio.value;
+        let telefonoModificado = ftelefono.value;
+
+        // Actualizar los campos modificados en el objeto cliente
+        cliente.nombre = nombreModificado;
+        cliente.dni = dniModificado;
+        cliente.cp = cpModificado;
+        cliente.poblacion = poblacionModificado;
+        cliente.provincia = provinciaModificado;
+        cliente.domicilio = domicilioModificado;
+        cliente.telefono = telefonoModificado;
+
+        container.removeChild(modal);
+        fnombre.value = "";
+        fdni.value = "";
+        fcp.value = "";
+        fpoblacion.value = "";
+        fprovincia.value = "";
+        fdomicilio.value = "";
+        ftelefono.value = "";
+        fmatricula.value = "";
+        fmarca.value = "";
+        fmodelo.value = "";
+        fchasis.value = "";
+        fkm.value = "";
+
+        // Aquí podrías realizar la lógica para enviar los datos actualizados del cliente al servidor, por ejemplo
+        btn_GestionarClientes.click();
+        console.log("Se ha hecho clic en Modificar cliente");
+        console.log("Cliente modificado:", cliente);
+      });
 
       container.appendChild(modal);
+
       break;
+
     case "confirmar":
-      
       tituloHeader.textContent = x;
 
       let si = document.createElement("button");
@@ -341,7 +380,6 @@ function crearModal(x) {
       si.textContent = "Confirmar";
       no.textContent = "Cancelar ";
 
-      
       modalBody.setAttribute(
         "style",
         "display: flex; justify-content: center;"
@@ -366,7 +404,6 @@ function crearModal(x) {
         }
 
         btn_GestionarClientes.click();
-        
       });
 
       no.addEventListener("click", function () {
@@ -450,7 +487,6 @@ fetch("datos.json")
   });
 
 btn_ConsultarCitas.addEventListener("click", function () {
-  
   //Tabla de revisiones
   let tabla = document.createElement("table");
 
@@ -505,8 +541,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
 
   //FUNCIONALIDAD FILTROS
 
-  
-  //BUSCADOR 
+  //BUSCADOR
   let buscador = document.createElement("div");
 
   let buqueda = document.createElement("input");
@@ -517,7 +552,22 @@ btn_ConsultarCitas.addEventListener("click", function () {
   btnBuscar.textContent = "Buscar";
   let filtrarPor = document.createElement("select");
   filtrarPor.setAttribute("id", "filtrarPor");
-  let opciones = ["Fecha de entrada", "Fecha de salida", "Nombre", "DNI", "Codigo Postal", "Poblacion", "Provincia", "Domicilio", "Telefono", "Matricula", "Marca", "Modelo", "Chasis", "Kilometros"];
+  let opciones = [
+    "Fecha de entrada",
+    "Fecha de salida",
+    "Nombre",
+    "DNI",
+    "Codigo Postal",
+    "Poblacion",
+    "Provincia",
+    "Domicilio",
+    "Telefono",
+    "Matricula",
+    "Marca",
+    "Modelo",
+    "Chasis",
+    "Kilometros",
+  ];
   opciones.forEach((opcion) => {
     let option = document.createElement("option");
     option.textContent = opcion;
@@ -600,7 +650,6 @@ btn_ConsultarCitas.addEventListener("click", function () {
     arrayFiltrado.forEach((cita) => {
       tabla.appendChild(crearFila(cita));
     });
-    
   });
   //FUNCIONALIDAD FILTROS
   //Ordenar por fecha de entrada
@@ -616,7 +665,7 @@ btn_ConsultarCitas.addEventListener("click", function () {
     });
     btn_ConsultarCitas.click();
   });
-  
+
   //Ordenar por fecha de entrada
   thfecha_salida.addEventListener("click", function () {
     arrayRevisiones.sort((revision1, revision2) => {
@@ -787,8 +836,6 @@ btn_ConsultarCitas.addEventListener("click", function () {
     btn_ConsultarCitas.click();
   });
 
-
-
   //Creacion de la tabla
   arrayRevisiones.forEach((cita) => {
     tabla.appendChild(crearFila(cita));
@@ -876,7 +923,6 @@ btn_PedirCita.addEventListener("click", function () {
 });
 
 btn_GestionarClientes.addEventListener("click", function () {
-  
   console.log(arrayClientes);
   //TABLA
   let tablaCliente = document.createElement("table");
@@ -907,7 +953,6 @@ btn_GestionarClientes.addEventListener("click", function () {
   modificarSeleccionados.addEventListener("click", function () {
     crearModal("¿Desea eliminar permanentemente estos clientes?");
   });
-
 });
 
 btn_Tuneo.addEventListener("click", function () {});
@@ -983,5 +1028,4 @@ function crearFila(cita) {
   fila.appendChild(celda14);
 
   return fila;
-
-};
+}
