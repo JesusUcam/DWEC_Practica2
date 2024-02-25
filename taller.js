@@ -439,7 +439,6 @@ let container = document.getElementById("container");
 let btn_ConsultarCitas = document.getElementById("botonCC");
 let btn_PedirCita = document.getElementById("botonPC");
 let btn_GestionarClientes = document.getElementById("botonGC");
-let btn_Tuneo = document.getElementById("botonT");
 
 fetch("datos.json")
   .then((res) => res.json())
